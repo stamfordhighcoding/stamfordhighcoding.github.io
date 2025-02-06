@@ -1,5 +1,5 @@
 ## Stamford High Coding Club's official website
-
+**Last update: Basic nav with mobile-only layout**
 <!--
 **stamfordhighcoding/stamfordhighcoding** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
