@@ -1,0 +1,85 @@
+body{
+    margin:0;
+    overflow-x:hidden;
+}
+@font-face {
+    font-family:'Monsterrat';
+    src: url('Monsterrat.ttf') format('TrueType');
+}
+@font-face {
+    font-family:'Feixen';
+    src: url('feixen-sans.ttf') format('TrueType');
+}
+#instalogo{
+    height:30px;
+    transform:translateY(8px);
+}
+#instalogo-link{
+    display:inline-block;
+    height:45px;
+    padding-left:20px; padding-right:20px;
+    transform:translateY(-22px);
+}
+#instalogo-link:hover, #joinlink:hover{
+    background-color:rgb(241, 241, 241);
+}
+nav{
+    width:100%;/*margin top for aside and then there is no element cover*/
+    height:60px;
+    border-bottom:1px solid black;
+}
+nav button{
+    width:60px; height:60px;
+    border:none;
+    margin-right:20px;
+    background:none;
+    padding-left:20px;
+}
+nav button:hover{
+    cursor:pointer;
+}
+nav button div{
+    width:90%;
+    height:2px;
+    background-color:black;
+    margin:calc(30% - 2px) 0px;
+    border-radius:5px;
+}
+#p1, #p2, #p3{
+    animation:none;
+}
+nav a{
+    text-decoration:none;
+    color:black;
+    padding:7.5px;
+}
+nav a#joinlink{
+    padding:20px;
+    display:block;
+    width:fit-content;
+    float:right;
+    font-family:'Monsterrat';
+}
+aside#menuside{
+    box-sizing:border-box;
+    border-right:1px solid black;
+    margin-top:61px;
+    position:absolute;
+    top:0;
+    left:-250px;
+    width:250px;
+    display:block;
+    height:calc(100vh - 61px);
+}
+aside#menuside a{
+    text-decoration:none;
+    color:black;
+    font-family:'Feixen';
+    font-size:20px;
+    display:block;
+    width:219px;
+    padding:15px;
+}
+aside#menuside a:hover{
+    background-color:rgb(241, 241, 241);
+}
