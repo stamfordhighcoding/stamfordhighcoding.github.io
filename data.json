@@ -1,14 +1,14 @@
 {
     "projects": [
         {
-            "href": "https://example.com/project1",
+            "href": "https://stamfordhighcoding.github.io/docs.html#d-2-13-25",
             "img": {
             "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_groqapi.webp",
             "alt": "Project 1 Thumbnail"
             }
         },
         {
-            "href": "https://example.com/project2",
+            "href": "https://stamfordhighcoding.github.io/docs.html",
             "img": {
             "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_placeholder.webp",
             "alt": "Project 2 Thumbnail"
