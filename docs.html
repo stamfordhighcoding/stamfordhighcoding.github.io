@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHS Coding Club</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="mobile-controls">
+        <button onclick="openNav()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M3 12h18M3 18h18"/>
+            </svg>
+        </button>
+        <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/root_pfp.jpg">
+    </div>
+    <nav>
+        <a style="padding:0;" href="index.html"><h1>SHS Coding Club</h1></a>
+        <p>Learn</p>
+        <a href="docs.html">documentation</a>
+        <a href="#.html">examples</a>
+        <a href="#.html">notes & tips</a>
+        <a href="#.html">LLM</a>
+        <a href="#.html"><span>join us</span></a>
+
+        <p>Community</p>
+        <a href="forum.html">project ideas</a>
+        <a href="#.html">Instagram</a>
+        <a href="#.html">Notion</a>
+        <a href="#.html">Github</a>
+    
+        <p>Resources</p>
+        <a href="#.html">Fundamentals</a>
+        <a href="#.html">Learn a language</a>
+        <a href="#.html">the everything page</a>
+    </nav>
+
+    <div id="dMain">
+        <h1 class="dMain-intro">Introduction</h1>
+        <p>A windows device is recommended with VScode installed for some projects.</p>
+        <p>If you are using a chromebook, a few of the recommended tools include:</p>
+        <ul>
+            <li><a href="https://repl.it">Replit</a> - online IDE</li>
+            <li><a href="https://bolt.new">bolt.new -</a> Less Cohesive Online IDE</li>
+            <li><a href="https://codepen.io/pen/">codepen.io</a> - Simple but less robust HTML editor</li>
+            <li><a href="https://vscode.dev/">Vscode.dev</a> - browser version of VScode (allows Tunnel connection & remote repo but limited extensions)</li>
+        </ul>
+        <p>For school computer quickstart:</p>
+        <ul>
+            <li><a href="https://apps.microsoft.com/detail/XP9KHM4BK9FZ7Q?hl=en-US&gl=US&ocid=pdpshare">VScode</a></li>
+            <li><a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a></li>
+        </ul>
+
+        <button onclick="copyID('d-2-13-25')" class="titlebtn" id="d-2-13-25">2/13/25: Interacting with your own LLM through groq API</button>
+        <P>You will be using:</P>
+        <ul>
+            <li>replit (or other python editor)</li>
+            <li>Groq API Key</li>
+        </ul>
+
+        <p>Ensure you have enough space in your Replit account for a new python app. If you do not have enough space, either delete an unused project, or replace the code inside of an existing python template.</p>
+        <p>Create a new Python App:</p>
+        <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2025_02_20_replit_screenshot.png">
+        <p>Paste the following into your <span>main.py</span>:</p>
+
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+            <pre><code id="code-block">
+import os
+        
+from groq import Groq
+                        
+client = Groq(
+    api_key=os.environ.get("GROQ_API_KEY"),
+)
+                        
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What does the federal interest rate do to the economy?",
+        }
+    ],
+    model="llama-3.3-70b-versatile",
+)
+                        
+print(chat_completion.choices[0].message.content)</code></pre>
+        </div>
+
+        <p>Go to groq.com and create a <a href="https://console.groq.com/keys">Free API Key</a> under Developers</p>
+        <p>Log in with a google account, click "Create API Key," use any display name.</p>
+
+        <img style="border-radius:20px;"src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2025_02_06_Groq_API_Key_screenshot.webp">
+
+        <p>Copy the display key, and store it somewhere safe. (like notepad, a google doc, or enter it in your search bar)</p>
+        <p>Go back to replit, create a new tab called 'Secrets', add a new secret labeled 'GROQ_API_KEY', and enter the value as your stored key.</p>
+        <p>Create another tab with 'shell', and type <span>pip install groq</span></p>
+        <p>Once all packages are downloaded, change the "content" line of your python code to any question you'd like to ask your AI, and run. Your output will appear in the Console tab.</p>
+        <h2>Additional Challenge:</h2>
+        <p>Connect your python file to a flask server so you can alter the JSON message content via a form or other text input, and receive and output in the HTML page.
+            <br>
+            <b>Or</b>, use the Groq JavaScript library <a href="https://console.groq.com/docs/quickstart">quickstart guide</a> for less dependency</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
