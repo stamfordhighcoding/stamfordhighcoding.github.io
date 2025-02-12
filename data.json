@@ -1,18 +1,90 @@
 {
     "projects": [
         {
-            "href": "https://stamfordhighcoding.github.io/docs.html#d-2-13-25",
+            "href": "/docs.html#d-2-13-25",
             "img": {
-            "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_groqapi.webp",
-            "alt": "Project 1 Thumbnail"
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_groqapi.webp",
+                "alt": "Groq API"
             }
         },
         {
-            "href": "https://stamfordhighcoding.github.io/docs.html",
+            "href": "/docs.html",
             "img": {
-            "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_placeholder.webp",
-            "alt": "Project 2 Thumbnail"
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_placeholder.webp",
+                "alt": "example alt text"
             }
+        }
+    ],
+    "projectIdeas": [
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_jellyfish.webp",
+                "alt": "3D dev"
+            },
+            "description": "3D web development",
+            "extendedDescription": "look into developing and displaying 3D models on the web. Popular places to start include three.js and babylon.js. use Blender or Sketchup to create your own models, or go to Sketchfab to find downloadable GLB/GLTF models",
+            "tags": ["3D", "JS", "web development", "HTML", "frontend", "three.js", "babylon.js", "webGL"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_fullstackwnode.webp",
+                "alt": "dynamic web"
+            },
+            "description": "Dynamic Web Experience",
+            "extendedDescription": "Use Node.js as a runtime environment that allows JavaScript to be run on a server, enabling backend logic, API handling, and real-time apps. Next.js, a React framework built on top of Node.js makes frontend development easier with server-side rendering (SSR), static site generation (SSG), and API routes.",
+            "tags": ["JS", "node.js", "next.js", "web development", "fullstack", "API", "react", "express.js", "vercel"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_websockets.webp",
+                "alt": "websockets"
+            },
+            "description": "Real-Time Chat",
+            "extendedDescription": "A real-time chat applications that would allow users to join a chatroom and exchange messages instantly. Built using WebSockets, allows for two-way communicaton, send and receive messages without page refreshes. Can be done with Laravel + Vue.js, React + spring boot, Python + FastAPI, or Node.js with Socket.io (simplest).",
+            "tags": ["WebSockets", "realtime", "database", "backend", "node.js", "collaborative", "API"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_morsecode.webp",
+                "alt": "morse code"
+            },
+            "description": "Morse Code Program",
+            "extendedDescription": "create a program to encode, decode, or go both ways. For a challenge, try coding another cypher algorithm. Popular languages to do this in include Python, Java, and JavaScript.",
+            "tags": ["beginner", "simple", "python", "java", "backend", "C#", "bash"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_fullstackfeatures.webp",
+                "alt": "web function"
+            },
+            "description": "Club Website Functionality",
+            "extendedDescription": "find a way to integrate functionality into this project ideas page, so people can see who is working on what projects on-site, also a simple way to update the data.json database as well as search through tags.",
+            "tags": ["node.js", "JSON", "database", "backend", "web development", "collaborative", "API"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_todoconsole.webp",
+                "alt": "console to do list"
+            },
+            "description": "Console-Based To-Do List",
+            "extendedDescription": "Create a simple task manager where users can add, remove, and view tasks. This can use lists, loops, functions, and file handling. For a challenge, save tasks to a file so they persist even after the program closes. If using python or java, consider another challenge of creating a GUI, and perhaps a calendar.",
+            "tags": ["backend", "python", "java", "JS", "database", "simple", "C#", "bash"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_password-4digit.webp",
+                "alt": "password cracker"
+            },
+            "description": "4-digit password cracker",
+            "extendedDescription": "A brute-force password cracker that systematically tries all possible 4-digit combinations. Bonus: measure how long it takes to crack specific passwords.",
+            "tags": ["beginner", "simple", "python", "java", "C#", "bash"]
         }
     ]
 }
