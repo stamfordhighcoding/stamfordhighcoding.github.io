@@ -86,5 +86,324 @@
             "extendedDescription": "A brute-force password cracker that systematically tries all possible 4-digit combinations. Bonus: measure how long it takes to crack specific passwords.",
             "tags": ["beginner", "simple", "python", "java", "C#", "bash"]
         }
-    ]
+    ],
+        "resourceList": {
+        "sections": [
+            {
+                "type": "div",
+                "content": {
+                    "button": {
+                        "type": "button",
+                        "content": "Web Development"
+                    }
+                },
+                "tags": ["HTML", "CSS", "JS", "frontend"]
+            },
+            {
+                "type": "links",
+                "links": [
+                    {
+                        "href": "https://developer.mozilla.org/",
+                        "content": "MDN Web Docs",
+                        "extraText": "Great for in-depth web development documentation."
+                    },
+                    {
+                        "href": "https://www.w3schools.com/",
+                        "content": "W3Schools",
+                        "extraText": "Good for beginner-friendly tutorials."
+                    },
+                    {
+                        "href": "https://glitch.com/",
+                        "content": "glitch",
+                        "extraText": "an IDE (mainly for static sites)"
+                    },
+                    {
+                        "href": "https://stackblitz.com/",
+                        "content": "stackblitz",
+                        "extraText": "an online IDE, also has Bolt.new for Ai app creation"
+                    },
+                    {
+                        "href": "https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet",
+                        "content": "Markdown Cheatsheet",
+                        "extraText": "for things like .readME files"
+                    },
+                    {
+                        "href": "https://flourish.studio/",
+                        "content": "flourish.studio",
+                        "extraText": "a no-code visualizing software for many charts and diagrams"
+                    },
+                    {
+                        "href": "https://uiverse.io/",
+                        "content": "uiverse",
+                        "extraText": "Large CSS component library"
+                    },
+                    {
+                        "href": "https://getcssscan.com/",
+                        "content": "CSS scan",
+                        "extraText": "extension for viewing CSS rules. also use getcssscan.com/css-box-shadow-examples for box shadows"
+                    },
+                    {
+                        "href": "https://css-tricks.com/category/notes/",
+                        "content": "CSS-tricks",
+                        "extraText": "a place to learn CSS yourself"
+                    },
+                    {
+                        "href": "https://rentry.co/dt92f",
+                        "content": "design resources index",
+                        "extraText": "an index of more than 700 links for frontend design"
+                    },
+                    {
+                        "href": "https://replit.com/~",
+                        "content": "ReplIt",
+                        "extraText": "A preferred fullstack online IDE"
+                    },
+                    {
+                        "href": "https://magicui.design/",
+                        "content": "Magic UI",
+                        "extraText": "component and template library"
+                    },
+                    {
+                        "href": "https://qwik.dev/",
+                        "content": "qwik",
+                        "extraText": "claims to be the fastest JS web development API"
+                    },
+                    {
+                        "href": "https://mobbin.com/",
+                        "content": "mobbin",
+                        "extraText": "image examples for UX designs on mobile and web. also use 60fps.design for animations"
+                    },
+                    {
+                        "href": "https://www.seesaw.website/",
+                        "content": "seesaw",
+                        "extraText": "a library of many well-made websites for inspiration"
+                    },
+                    {
+                        "href": "https://bentogrids.com/",
+                        "content": "bentogrids",
+                        "extraText": "beautiful grid examples"
+                    },
+                    {
+                        "href": "https://codesandbox.io/",
+                        "content": "codesandbox.io",
+                        "extraText": "online IDE"
+                    },
+                    {
+                        "href": "https://gsap.com/",
+                        "content": "GSAP",
+                        "extraText": "motion animations and design with JS"
+                    },
+                    {
+                        "href": "https://www.supahero.io/",
+                        "content": "Supahero",
+                        "extraText": "vast array of landing page examples"
+                    },
+                    {
+                        "href": "https://tailwindcss.com/",
+                        "content": "tailwindcss",
+                        "extraText": "very popular CSS framework"
+                    }
+                ]
+            },
+            {
+                "type": "div",
+                "content": {
+                    "button": {
+                        "type": "button",
+                        "content": "Icons and fonts"
+                    }
+                },
+                "tags": ["HTML", "CSS", "frontend"]
+            },
+            {
+                "type": "links",
+                "links": [
+                    {
+                        "href": "https://icones.js.org/",
+                        "content": "Icônes",
+                        "extraText": "massive library of libraries of icons"
+                    },
+                    {
+                        "href": "https://lucide.dev/icons/",
+                        "content": "Lucide",
+                        "extraText": "consistent, similar styles"
+                    },
+                    {
+                        "href": "https://fonts.google.com/",
+                        "content": "Google Fonts",
+                        "extraText": "preferred font library (also has icons section)"
+                    },
+                    {
+                        "href": "https://hugeicons.com/icons?style=Stroke",
+                        "content": "Hugeicons"
+                    },
+                    {
+                        "href": "https://heroicons.com/",
+                        "content": "Heroicons",
+                        "extraText": "Professional and popular library"
+                    },
+                    {
+                        "href": "https://fontesk.com/",
+                        "content": "Fontesk",
+                        "extraText": "creative and unique fonts"
+                    },
+                    {
+                        "href": "https://font.download/",
+                        "content": "Font.Download",
+                        "extraText": "Large font library"
+                    },
+                    {
+                        "href": "https://www.dafont.com/",
+                        "content": "dafont",
+                        "extraText": "popular font library"
+                    },
+                    {
+                        "href": "https://fontshare.com/",
+                        "content": "Fontshare",
+                        "extraText": "professional and unique fonts"
+                    },
+                    {
+                        "href": "https://www.urbanfonts.com/",
+                        "content": "urbanfonts",
+                        "extraText": "large library of fonts"
+                    }
+                ]
+            },
+            {
+                "type": "div",
+                "content": {
+                    "button": {
+                        "type": "button",
+                        "content": "Portfolio Examples"
+                    }
+                },
+                "tags": ["HTML", "CSS", "JS", "frontend"]
+            },
+            {
+                "type": "links",
+                "links": [
+                    {
+                        "href": "https://petertarka.com/",
+                        "content": "Peter Tarka",
+                        "extraText": "light mode and 3D models"
+                    },
+                    {
+                        "href": "https://undersight.co/",
+                        "content": "Eduardo Nunez",
+                        "extraText": "Cool animations, fun layout"
+                    },
+                    {
+                        "href": "https://traction.one/works",
+                        "content": "traction",
+                        "extraText": "Professional and perfect dark mode showcase"
+                    },
+                    {
+                        "href": "https://www.basedash.com/",
+                        "content": "basedash",
+                        "extraText": "visually fun project example"
+                    },
+                    {
+                        "href": "https://www.reactbits.dev/showcase",
+                        "content": "React Bits",
+                        "extraText": "site examples for react"
+                    }
+                ]
+            },
+            {
+                "type": "div",
+                "content": {
+                    "button": {
+                        "type": "button",
+                        "content": "3D Development"
+                    }
+                },
+                "tags": ["3D", "VR", "HTML", "JS"]
+            },
+            {
+                "type": "links",
+                "links": [
+                    {
+                        "href": "https://threejs.org/",
+                        "content": "three.js",
+                        "extraText": "Best 3D modeling JS API"
+                    },
+                    {
+                        "href": "https://www.babylonjs.com/",
+                        "content": "babylon.js",
+                        "extraText": "an API built on top of three.js that makes it faster and easier to code"
+                    },
+                    {
+                        "href": "https://modelviewer.dev/",
+                        "content": "model-viewer",
+                        "extraText": "model embeds without watermark (must host file yourself, unavailable on safari & firefox)"
+                    },
+                    {
+                        "href": "https://www.blender.org/",
+                        "content": "Blender",
+                        "extraText": "most popular free and feature-rich 3D modeling program"
+                    },
+                    {
+                        "href": "https://www.sketchup.com/en/plans-and-pricing/sketchup-free",
+                        "content": "SketchUp",
+                        "extraText": "online 3D modeller"
+                    },
+                    {
+                        "href": "https://sketchfab.com/",
+                        "content": "Sketchfab",
+                        "extraText": "A place to share 3D models, also model embeds"
+                    },
+                    {
+                        "href": "https://www.unrealengine.com/",
+                        "content": "Unreal Engine",
+                        "extraText": "A 3D computer graphics engine, also used for game development"
+                    },
+                    {
+                        "href": "https://spline.design/",
+                        "content": "Spline",
+                        "extraText": "model creation and editing, AI features, model embeds"
+                    },
+                    {
+                        "href": "https://www.clo3d.com/",
+                        "content": "clo3d",
+                        "extraText": "most feature-rich 3D clothing design (paid)"
+                    },
+                    {
+                        "href": "https://www.tinkercad.com/",
+                        "content": "tinkercad",
+                        "extraText": "Autodesk's online CAD engineering software"
+                    },
+                    {
+                        "href": "https://www.meshy.ai/",
+                        "content": "Meshy.ai",
+                        "extraText": "AI image and text to model, with texture and animation functionalities"
+                    },
+                    {
+                        "href": "https://clara.io/",
+                        "content": "clara.io",
+                        "extraText": "model library and embeds"
+                    },
+                    {
+                        "href": "https://www.printables.com/",
+                        "content": "printables",
+                        "extraText": "model library for printing"
+                    },
+                    {
+                        "href": "https://cults3d.com/",
+                        "content": "printables",
+                        "extraText": "3D library, also for printing"
+                    },
+                    {
+                        "href": "https://www.virtualthreads.io/",
+                        "content": "Virtualthreads",
+                        "extraText": "basic online clothing design"
+                    },
+                    {
+                        "href": "https://text-to-cad.zoo.dev/",
+                        "content": "AI text to CAD"
+                    }
+                ]
+            }
+        ]
+    }
+
+
 }
