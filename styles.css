@@ -325,3 +325,88 @@ nav a span:hover {
         font-size:26px;
     }
 }
+/*-------------------------------------------------------------------*/
+#resourcelist {
+    margin-left: 30px;
+  }
+  
+  .resource-button {
+    width: fit-content;
+    margin-top: 10px;
+    font-size: 30px;
+    font-family: monospace;
+    background: none;
+    color: var(--t);
+    border: none;
+    text-align: left;
+    padding-left: 1em;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    transform:translateX(-30px);
+  }
+  
+  /* ::before element, initially hidden */
+  .resource-button::before {
+    content: "#";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;           /* Initially hidden */
+    transition: opacity 0.1s ease-in-out; /* Smooth fade-in effect */
+    color:var(--t-b);
+  }
+  
+  /* Hover effects */
+  .resource-button:hover {
+    cursor:pointer;
+  }
+  
+  .resource-button:hover::before {
+    opacity: 1;  /* Fades in when hovered */
+  }
+#resourcelist .tags{
+    font-size:15px;
+    margin-top:20px;
+}
+#resourcelist div {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Ensure vertical alignment */
+    flex-wrap: wrap; /* Prevent overflow and allow wrapping if needed */
+  }
+  #resourcelist li {
+    display: flex;
+    align-items: top;
+    gap: 8px; /* Space between link and extra text */
+    font-family:'Inter', Arial;
+    margin-top:14px;
+}
+#resourcelist li::before {
+    content:"";
+    display:block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background-color:var(--t);
+    position:absolute;
+    transform:translateX(-18px) translateY(8px);
+    
+}
+#resourcelist li a {
+    flex-shrink: 0; /* Prevents link from shrinking */ 
+    text-decoration:none;
+    color:var(--t-b);
+}
+
+#resourcelist li span.extra-text {
+    display: inline;
+    color: var(--t);
+}
+ul.resource-links{
+    padding-left:20px;
+}
+.extra-text::before{
+    content:" - "
+}
