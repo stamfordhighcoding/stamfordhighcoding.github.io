@@ -1,10 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
     const projectsContainer = document.getElementById("projects");
     const projectIdeasContainer = document.getElementById("projectIdeas");
-  
+    const resourceListContainer = document.getElementById("resourcelist");
+
+    // Helper function to create the SVG element
+    const createResourceSVG = () => {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("width", "24");
+        svg.setAttribute("height", "24");
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5");
+        path.setAttribute("stroke", "currentColor");
+        path.setAttribute("stroke-width", "2");
+        path.setAttribute("fill", "none");
+        
+        svg.appendChild(path);
+        return svg;
+    };
+
     fetch("data.json")
-      .then(response => response.json())
-      .then(data => {
+        .then(response => response.json())
+        .then(data => {
             if (projectsContainer) {
                 // Populate main projects (only on index.html)
                 data.projects.forEach(project => {
@@ -63,8 +81,64 @@ document.addEventListener("DOMContentLoaded", () => {
                     projectIdeasContainer.appendChild(ideaDiv);
                 });
             }
-      })
-      .catch(error => console.error("Error loading JSON:", error));
+
+            if (resourceListContainer) {
+                data.resourceList.sections.forEach(section => {
+                    if (section.type === "div") {
+                        const containerDiv = document.createElement("div");
+            
+                        if (section.content.button) {
+                            const button = document.createElement("button");
+                            button.className = "resource-button";
+                            button.textContent = section.content.button.content;
+                            containerDiv.appendChild(button);
+                        }
+            
+                        if (section.tags && section.tags.length > 0) {
+                            const tags = document.createElement("span");
+                            tags.className = "tags";
+                            tags.textContent = section.tags.join(", ");
+                            containerDiv.appendChild(tags);
+                        }
+            
+                        resourceListContainer.appendChild(containerDiv);
+                    } else if (section.type === "links") {
+                        const ul = document.createElement("ul");
+                        ul.className = "resource-links";
+            
+                        section.links.forEach(linkData => {
+                            const li = document.createElement("li");
+            
+                            
+            
+                            // Add hyperlink if available
+                            if (linkData.href && linkData.content) {
+                                const link = document.createElement("a");
+                                link.href = linkData.href;
+                                link.textContent = linkData.content;
+                                li.appendChild(link);
+                            }
+                            
+                            // Add extra text after the link
+                            if (linkData.extraText) {
+                                const textSpan = document.createElement("span");
+                                textSpan.textContent = linkData.extraText;
+                                textSpan.className = "extra-text";
+                                li.appendChild(document.createTextNode(" ")); // Adds space between link and text
+                                li.appendChild(textSpan);
+                            }
+                            
+                            ul.appendChild(li);
+                        });
+            
+                        resourceListContainer.appendChild(ul);
+                    }
+                });
+            }
+            
+            
+        })
+        .catch(error => console.error("Error loading JSON:", error));
 });
 
 
