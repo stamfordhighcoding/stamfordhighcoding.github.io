@@ -75,7 +75,10 @@ nav a span:hover {
 #projects a img {
     display: block;
     width: 100%;
-    transition: transform 0.2s ease; 
+    transition: transform 0.2s ease;
+    border:1px solid #444444;
+    border-left:none;
+    box-sizing:border-box;
 }
 
 #projects a {
@@ -195,6 +198,9 @@ nav a span:hover {
     border-radius:5px;
     margin:0;
 }
+#dMain video{
+    margin:20px 0px;
+}
 #dMain button{
     transform:translateY(20px);
     background:none;
@@ -246,24 +252,24 @@ nav a span:hover {
 .titlebtn:hover{
     text-decoration:underline;
 }
-#dMain img{
+#dMain img, #dMain video{
     width:65%;
 }
 @media screen and (max-width: 700px) {/*mobile*/
     #dMain{
         width:90%;
     }
-    #dMain img{
+    #dMain img, #dMain video{
         width:100%;
     }
 }
 @media screen and (min-width: 1000px) {
-    #dMain img{
+    #dMain img, #dMain video{
         width:90%;
     }
 }
 @media screen and (min-width: 1200px) {
-    #dMain img{
+    #dMain img, #dMain video{
         height:400px;
         width:auto;
     }
