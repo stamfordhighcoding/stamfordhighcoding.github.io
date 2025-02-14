@@ -8,10 +8,10 @@
             }
         },
         {
-            "href": "/docs.html",
+            "href": "/docs.html#d-20-25",
             "img": {
-                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_placeholder.webp",
-                "alt": "example alt text"
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_unity_videoframe_0.png",
+                "alt": "Unity game development"
             }
         }
     ],
