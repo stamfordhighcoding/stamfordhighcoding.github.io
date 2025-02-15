@@ -192,3 +192,16 @@ function copyID(elementID) {
     }
 }
 /*------------------------------------------------------------------------------------*/
+document.querySelector(".buttonselections").addEventListener("click", function(event) {
+    const buttons = Array.from(this.querySelectorAll("button"));
+    const clickedButton = event.target;
+    
+    if (buttons.includes(clickedButton)) {
+        const index = buttons.indexOf(clickedButton);
+        
+        const windows = document.querySelectorAll(".windowcontainer-objects > div");
+        windows.forEach((window, i) => {
+            window.style.display = i === index ? "block" : "none";
+        });
+    }
+});

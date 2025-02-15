@@ -56,13 +56,14 @@
         </ul>
 
         <button onclick="copyID('d-2-13-25')" class="titlebtn" id="d-2-13-25">2/13/25: Interacting with your own LLM through groq API</button>
+        <br>
         <P>You will be using:</P>
         <ul>
             <li>replit (or other python editor)</li>
             <li>Groq API Key</li>
         </ul>
 
-        <p>Ensure you have enough space in your Replit account for a new python app. If you do not have enough space, either delete an unused project, use a new account, or replace the code inside of an existing python template. There are also a couple more editors like bolt.new (tell it to make a blank python program), or shell.cloud.google.com (use 'python filename.py' to run) </p>
+        <p>Ensure you have enough space in your Replit account for a new python app. If you do not have enough space, either delete an unused project, or replace the code inside of an existing python template.</p>
         <p>Create a new Python App:</p>
         <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2025_02_20_replit_screenshot.png">
         <p>Paste the following into your <span>main.py</span>:</p>
@@ -105,17 +106,151 @@ print(chat_completion.choices[0].message.content)</code></pre>
             <br>
             <b>Or</b>, use the Groq JavaScript library <a href="https://console.groq.com/docs/quickstart">quickstart guide</a> for less dependency</p>
 
-            <button onclick="copyID('d-2-20-25')" class="titlebtn" id="d-2-20-25">2/20/25: Getting started with Unity Game Development</button>
-            <video controls preload="metadata" poster="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_unity_videoframe_0.png">
-                <source src="https://storage.googleapis.com/unity-connect-prd/20240523/videos/3b180eea-0ef0-4dbb-a22f-320e58dff619_Essentials_Pathway_M0_Intro.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              
-            <p>In order to use Unity, you must have a computer with admin privileges with Windows, Mac, or Linux.</p>
-            <a href="https://unity.com/download">Download here</a>
-            <p>It is recommended to read through Unity's own <a href="https://learn.unity.com/tutorial/get-started-with-the-unity-hub?uv=2021.3">beginners guide</a> after downloading.</p>
-            <p>If you cannot download unity whatsoever, consider exploring game development with scratch, python, or three.js.</p>
-    </div>
+
+        
+            <button onclick="copyID('d-2-20-25')" class="titlebtn" id="d-2-20-25">2/20/25: Getting started with game development</button>
+            <br>
+            <div class="windowcontainer">
+                <div class="buttonselections" style="grid-template-columns: 255px 150px;">
+                    <button>For the web: three.js</button>
+                    <button>With Unity</button>
+                </div>
+                <hr class="buttonselectionsafter">
+                <div class="windowcontainer-objects">
+                    <div>
+                        <h1>three.js</h1>
+                        <p>three.js is an external library built on top of WebGL for rendering in 3D. WebGL requires some very low-level knowledge, which would take a lot of time to get into. three.js is the most optimized, well-documented library to use for our case. To test if your browser can view WebGL and run three.js, confirm you can move the object below:</p>
+                        <div class="threeIframe"><p>Hover over me</p><iframe src="docs_external_2-20-25.html"></iframe></div>
+                        <p>To view models, .gltf and .glb formats are the best for importing. Otherwise, OBJ, FBX, STL, Collada, and PLY are also possible to use, though not recommended. The latest version as of writing this is <span>v173</span>, published on December 31.</p>
+                        <p>Some of the most important concepts to grasp are camera rendering, how to use lights, create new and add objects, and request animation frames.</p>
+                        <p>A basic understanding of JavaScript is recommended, though this documentation will do its best to pretend you do not know much about it.</p>
+                        <p>To tinker will all of the following, copy the following code into a new HTML file. Try changing the values that are highlighted here.</p>
+                        <div>
+                            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+    <darker>&lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+    &lt;head&gt;
+      &lt;meta charset="utf-8"&gt;
+      &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+      &lt;title&gt;Three.js Moving Object&lt;/title&gt;</darker>
+      &lt;script type="importmap"&gt;
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@<white>0.173.0</white>/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@<white>0.173.0</white>/examples/jsm/"
+          }
+        }
+      &lt;/script&gt;
+      <darker>&lt;style&gt;
+        body { margin: 0; overflow: hidden; }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;</darker>
+    
+      &lt;script type="module"&gt;
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    
+        <green>// Scene setup</green>
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color("<span>#222</span>");
+    
+        <green>// Camera</green>
+        const camera = new THREE.PerspectiveCamera(<span>75, window.innerWidth / window.innerHeight, 0.1, 100</span>);
+        camera.position.set(<span>4, 5, 9</span>);
+        camera.lookAt(<span>0, 0, 0</span>);
+    
+        <green>// Renderer</green>
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+    
+        <green>// Lights</green>
+        const ambientLight = new THREE.AmbientLight(<span>0xffffff, 0.7</span>);
+        scene.add(ambientLight);
+    
+        const directionalLight = new THREE.DirectionalLight(<span>0xffffff, 1</span>);
+        directionalLight.position.set(<span>5, 10, 5</span>);
+        scene.add(directionalLight);
+    
+        <green>// Plane (ground)</green>
+        const planeGeometry = new THREE.PlaneGeometry(<span>20, 20</span>);
+        const planeMaterial = new THREE.MeshStandardMaterial({ color: <span>0x555555</span>, side: THREE.DoubleSide });
+        const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.rotation.x = <span>-Math.PI / 2</span>;
+        scene.add(plane);
+    
+        <green>// Movable Object (Cube)</green>
+        const cubeGeometry = new THREE.BoxGeometry(<span>1, 1, 1</span>);
+        const cubeMaterial = new THREE.MeshStandardMaterial({ color: <span>0xff4444</span> });
+        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube.position.y = <span>0.5</span>;
+        scene.add(cube);
+    
+        <green>// Controls</green>
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = <span>true</span>;
+    
+        <green>// Movement variables</green>
+        const moveSpeed = <span>0.1</span>;
+        const keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false, KeyW: false, KeyA: false, KeyS: false, KeyD: false };
+    
+        window.addEventListener("keydown", (event) =&gt; {
+          if (keys.hasOwnProperty(event.code)) keys[event.code] = true;
+        });
+    
+        window.addEventListener("keyup", (event) =&gt; {
+          if (keys.hasOwnProperty(event.code)) keys[event.code] = false;
+        });
+    
+        <green>// Animation loop</green>
+        function animate() {
+          requestAnimationFrame(animate);
+    
+          // Move the cube based on key inputs
+          if (<span>keys.ArrowUp || keys.KeyW</span>) cube.position.z -= moveSpeed;
+          if (<span>keys.ArrowDown || keys.KeyS</span>) cube.position.z += moveSpeed;
+          if (<span>keys.ArrowLeft || keys.KeyA</span>) cube.position.x -= moveSpeed;
+          if (<span>keys.ArrowRight || keys.KeyD</span>) cube.position.x += moveSpeed;
+    
+          controls.update();
+          renderer.render(scene, camera);
+        }
+        animate();
+    
+        <green>// Resize handling</green>
+        window.addEventListener("resize", () =&gt; {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    
+      &lt;/script&gt;
+    
+    <darker>&lt;/body&gt;
+    &lt;/html&gt;</darker>
+    
+</code></pre>
+<p>You have now successfully understood how to move an object, customize the camera, and change scene lighting and colors.</p>
+<h2>Additional Challenge:</h2><p>Use cannon.js or ammo.js to start with physics and make a ragdoll body.<br> <b>Or,</b> Create a more customized scene</p>
+                        </div>
+                    </div>
+                    <div>
+                        <video controls preload="metadata" poster="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_unity_videoframe_0.png">
+                            <source src="https://storage.googleapis.com/unity-connect-prd/20240523/videos/3b180eea-0ef0-4dbb-a22f-320e58dff619_Essentials_Pathway_M0_Intro.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <p>In order to use Unity, you must have a computer with admin privileges with Windows, Mac, or Linux.</p>
+                        <a href="https://unity.com/download">Download here</a>
+                        <p>It is recommended to read through Unity's own <a href="https://learn.unity.com/tutorial/get-started-with-the-unity-hub?uv=2021.3">beginners guide</a> after downloading.</p>
+                        <p>If you cannot download unity, consider exploring game development with scratch, python, or three.js, which require a less intensive setup and can be done online.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
     <script src="script.js"></script>
 </body>
