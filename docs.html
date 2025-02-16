@@ -121,7 +121,7 @@ print(chat_completion.choices[0].message.content)</code></pre>
                         <h1>three.js</h1>
                         <p>three.js is an external library built on top of WebGL for rendering in 3D. WebGL requires some very low-level knowledge, which would take a lot of time to get into. three.js is the most optimized, well-documented library to use for our case. To test if your browser can view WebGL and run three.js, confirm you can move the object below:</p>
                         <div class="threeIframe"><p>Hover over me</p><iframe src="docs_external_2-20-25.html"></iframe></div>
-                        <p>To view models, .gltf and .glb formats are the best for importing. Otherwise, OBJ, FBX, STL, Collada, and PLY are also possible to use, though not recommended. The latest version as of writing this is <span>v173</span>, published on December 31.</p>
+                        <p>To view models, .gltf and .glb formats are the best for importing. Otherwise, OBJ, FBX, STL, Collada, and PLY are also possible to use, though not recommended. The latest version as of writing this is <span>r173</span>, published on December 31.</p>
                         <p>Some of the most important concepts to grasp are camera rendering, how to use lights, create new and add objects, and request animation frames.</p>
                         <p>A basic understanding of JavaScript is recommended, though this documentation will do its best to pretend you do not know much about it.</p>
                         <p>To tinker will all of the following, copy the following code into a new HTML file. Try changing the values that are highlighted here.</p>
@@ -232,9 +232,9 @@ print(chat_completion.choices[0].message.content)</code></pre>
     &lt;/html&gt;</darker>
     
 </code></pre>
-<p>You have now successfully understood how to move an object, customize the camera, and change scene lighting and colors.</p><p>If you would like to tinker with less worry about code, head to <a href="https://threejs.org/editor/">the editor</a></p>
+<p>You have now successfully understood how to move an object, customize the camera, and change scene lighting and colors.</p>
+<p>If you would like to tinker with less worry about code, head to <a href="https://threejs.org/editor/">the editor</a></p>
 <h2>Additional Challenge:</h2><p>Use cannon.js or ammo.js to start with physics and make a ragdoll body.<br> <b>Or,</b> Create a more customized scene</p>
-                            
                         </div>
                     </div>
                     <div>
@@ -250,8 +250,192 @@ print(chat_completion.choices[0].message.content)</code></pre>
                     </div>
                     
                 </div>
+                <button onclick="copyID('d-2-20-25-2')" class="titlebtn" id="d-2-20-25-2">2/20/25(2): Lets set up a production-ready environment for your three.js scene.</button>
+                <br>
+                <div class="windowcontainer">
+                    <div class="buttonselections" style="grid-template-columns: 345px 450px;">
+                        <button>I'm using a school chromebook</button>
+                        <button>I have a personal computer</button>
+                    </div>
+                    <hr class="buttonselectionsafter">
+                    <div class="windowcontainer-objects">
+                        <div>
+                            <p>School chromebook:</p>
+                            <p>Head to <u>bolt.new</u> and ask it to create a default vue frontend with node.js backend, and have npm functionality.</p>
+                            <p>Your project should look something like this:</p>
+                            <div class="container-editor">
+                                <div class="code-editor">
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="var(--t)" stroke-width="1.5"><rect width="7" height="5" rx=".6" transform="matrix(0 -1 -1 0 22 21)"/><rect width="7" height="5" rx=".6" transform="matrix(0 -1 -1 0 7 15.5)"/><rect width="7" height="5" rx=".6" transform="matrix(0 -1 -1 0 22 10)"/><path d="M17 17.5h-3.5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2H17M11.5 12H7"/></g></svg>
+                                        <span>Files</span>
+                                    </div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16"><path fill="var(--t)" d="M5 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V5.414a1.5 1.5 0 0 0-.44-1.06L9.647 1.439A1.5 1.5 0 0 0 8.586 1zM4 3a1 1 0 0 1 1-1h3v2.5A1.5 1.5 0 0 0 9.5 6H12v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zm7.793 2H9.5a.5.5 0 0 1-.5-.5V2.207z"/></svg>
+                                        <span class="file-name">main.js</span>
+                                    </div>
+                                    <div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="var(--t)" d="M17.65 6.35A7.96 7.96 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4z"/></svg>
+                                        <span class="url-name">http://localhost:5173/</span>
+                                        <a class="url-anchor-link" href="#.html"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83l1.41 1.41L19 6.41V10h2V3z"/></svg></a>
+                                    </div>
+                                    <div>
+                                        <div class="file-folder">
+                                            <button class="file-folder-shown">public</button>
+                                            <div class="file-folder-hidden">
+                                                <button class="file" id="2_20_25_2_vitesvg">vite.svg</button>
+                                            </div>
+                                        </div>
+                                        <button class="file" id="2_20_25_2_gitignore">.gitignore</button>
+                                        <button class="file" id="2_20_25_2_counterjs">counter.js</button>
+                                        <button class="file" id="2_20_25_2_indexhtml">index.html</button>
+                                        <button class="file" id="2_20_25_2_javascriptsvg">javascript.svg</button>
+                                        <button class="file fileDefaultOpen" id="2_20_25_2_mainjs">main.js</button>
+                                        <button class="file" id="2_20_25_2_packagelockjson">package-lock.json</button>
+                                        <button class="file" id="2_20_25_2_packagejson">package.json</button>
+                                        <button class="file" id="2_20_25_2_stylecss">style.css</button>
+                                    </div>
+                                    <div class="code-content">
+                                        <iframe src="docs_external_2_20_25_2_mainjs.txt"></iframe>
+                                    </div>
+                                    <div class="code-output">
+                                        <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_25_code-editor-output.png">
+                                    </div>
+                                </div>
+                                <div class="code-output-smallscreen code-output">
+                                    <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_25_code-editor-output.png">
+                                </div>
+                            </div>
+                        
+                            <p>type node into the terminal to ensure it is running.</p>
+                            <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_2_bolt_terminal_nodecheck.png">
+                            <p>You can delete files <span>counter.js</span>, <span>javascript.svg</span>, and public/<span>vite.svg</span></p>
+                            <p>also remove all of the text in main.js so there is nothing there.</p>
+                            <p>Next, head back to the terminal, use <span>ctrl + c</span> to exit the current process, and then type <span>npm install three</span></p>
+                            <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_2_bolt_terminal_npminstallthree.png.png">
+                            <p>type <span>npm run dev</span> and rerun the output</p>
+                        </div> 
+                        <div>
+                            <p>Personal Computer:</p>
+                            <ul>
+                                <li>have vscode installed</li>
+                                <li>download the latest nodejs <a href="https://nodejs.org/en">here</a></li>
+                                <ul>
+                                    <li>go through all the prompts and install the additional recommended dependencies (which might be something like chocolatey or python)</li>
+                                    <li>head into a new window in vscode, create a new folder, enter the folder, and head to terminal.</li>
+                                </ul>
+                                <li>type "npm create vite@latest"</li>
+                            </ul>
+                            <p>the terminal should respond asking you for the project name. we'll use "hello-world" for this example.</p>
+                            <p>When it asks you to select a variant, select regular JavaScript.</p>
+                            <p>the terminal should tell you to run three different commands. <span>cd hello-world</span>, <span>npm install</span>, and <span>npm run dev</span>.</p>
+                            <p>you should have a link to <a href="http://localhost:5173/">http://localhost:5173/</a> in the terminal</p>
+                            <p>Delete <b>counter.js</b>, <b>javascript.svg</b>, and <b>vite.svg</b>. Also remove all of the text in main.js so there is nothing there.</p>
+                            <p>Now head back to the terminal, use ctrl + c to exit the current process, and type <span>npm install three</span></p>
+                            <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_2_bolt_terminal_vscodenpminstallthree.png.png">
+                            <p>get your server running again by typing <span>npm run dev</span> back in the terminal</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <p>now put this in your main.js</p>
+                <div>
+                    <button onclick="copyCode(this)">Copy Code</button>
+                    <pre><code id="code-block">
+import * as THREE from 'three';
+console.log(THREE)</code></pre>
+                </div>
+        
             </div>
-        </div>
+            
+            <p>now that you have vite running with node, and have installed three, your production-level server is ready.</p>
+            <p>if you open the console (ctrl + shift + i) for the page entered, you should see something similar to this:</p>
+            <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_2_consolefilesthree.png">
+            <p>click on the "Module", which will show a list of all the three files you have imported.</p>
+            <h1>Lets move on to creating our scene</h1>
+            <p>paste the following into your main.js</p>
+            <div>
+                <button onclick="copyCode(this)">Copy Code</button>
+                <pre><code id="code-block">
+import * as THREE from 'three';
+
+<green>//create a new scene</green>
+const scene = new THREE.Scene()
+                    
+<green>//what you want to add to the scene:</green>
+const cubeGeometry = new THREE.BoxGeometry(1,1,1)
+const cubeMaterial = new THREE.MeshBasicMaterial({color: "blue"})//(basic color will not respond to light)
+                    
+const cubeMesh = new THREE.Mesh(
+    cubeGeometry,
+    cubeMaterial
+)
+                    
+        
+console.log(cubeMesh)
+console.log(scene)
+scene.add(cubeMesh)
+</code></pre>
+            </div>
+            <p>Heading into the console again, you should be able to see all of the characteristics of the scene.</p>
+            <img src="https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/blog_2_20_2025_2_consolebasicscene.png">
+         <p>update your index.html to have a <span>&lt;canvas class="threejs"&gt;&lt;/canvas&gt;</span></p>
+        
+        <p>alter or copy your main.js file to look like this:</p>
+
+        <div>
+        <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+import * as THREE from 'three';
+
+<green>//create a new scene</green>
+const scene = new THREE.Scene()
+            
+<green>//what you want to add to the scene:</green>
+const cubeGeometry = new THREE.BoxGeometry(1,1,1)
+const cubeMaterial = new THREE.MeshBasicMaterial({color: "blue"})//(will not respond to light)
+            
+const cubeMesh = new THREE.Mesh(
+    cubeGeometry,
+    cubeMaterial
+)
+scene.add(cubeMesh)
+            
+<green>// initialize the camera</green>
+const camera = new THREE.PerspectiveCamera(
+    75, 
+    window.innerWidth / window.innerHeight,
+    0.1, //dont see anything closer than this distance
+    30 //dont see anything farther than this distance
+)
+            
+<green>// position (of the camera)</green>
+camera.position.z = 5
+scene.add(camera)
+            
+<green>// initialize the renderer</green>
+const canvas = document.querySelector('canvas.threejs')
+const renderer = new THREE.WebGLRenderer({
+     canvas: canvas
+})
+            
+<green>//final step for canvas drawing</green>
+renderer.setSize(window.innerWidth, window.innerHeight)//by default will be small
+renderer.render(scene, camera)
+    </code></pre>
+    </div>
+        
+        <p>note: leave off at <a href="https://youtu.be/KM64t3pA4fs?si=fOaKl7_Inv1rvfn_&t=3895">1:04:55</a></p>    
+        <a href="https://github.com/stamfordhighcoding/assets/blob/main/project-bolt-sb1-dnlznhl2.zip">github link to bolt template</a>
+        
+    
+    
+    
+    
+    
+    
+    </div><!--end of #dMain-->
+
+       
 
     <script src="script.js"></script>
 </body>

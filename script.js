@@ -192,16 +192,77 @@ function copyID(elementID) {
     }
 }
 /*------------------------------------------------------------------------------------*/
-document.querySelector(".buttonselections").addEventListener("click", function(event) {
-    const buttons = Array.from(this.querySelectorAll("button"));
-    const clickedButton = event.target;
+// Get all tab container instances
+document.querySelectorAll(".windowcontainer").forEach(container => {
+    // Add click listener to each container's button selection area
+    const buttonArea = container.querySelector(".buttonselections");
     
-    if (buttons.includes(clickedButton)) {
-        const index = buttons.indexOf(clickedButton);
+    buttonArea.addEventListener("click", function(event) {
+        const buttons = Array.from(this.querySelectorAll("button"));
+        const clickedButton = event.target;
         
-        const windows = document.querySelectorAll(".windowcontainer-objects > div");
-        windows.forEach((window, i) => {
-            window.style.display = i === index ? "block" : "none";
+        if (buttons.includes(clickedButton)) {
+            // Remove active state from all buttons in this container
+            buttons.forEach(button => button.classList.remove("active"));
+            // Add active state to clicked button
+            clickedButton.classList.add("active");
+            
+            const index = buttons.indexOf(clickedButton);
+            
+            // Find and toggle windows within this specific container
+            const windows = container.querySelectorAll(".windowcontainer-objects > div");
+            windows.forEach((window, i) => {
+                window.style.display = i === index ? "block" : "none";
+            });
+        }
+    });
+    
+    // Initialize first tab as active for each container
+    const firstButton = buttonArea.querySelector("button");
+    if (firstButton) {
+        firstButton.classList.add("active");
+        const firstWindow = container.querySelector(".windowcontainer-objects > div");
+        if (firstWindow) {
+            firstWindow.style.display = "block";
+        }
+        // Hide other windows
+        const otherWindows = container.querySelectorAll(".windowcontainer-objects > div:not(:first-child)");
+        otherWindows.forEach(window => {
+            window.style.display = "none";
         });
     }
+});
+/*-------------------------------------------------------------------*/
+document.addEventListener("DOMContentLoaded", function () {
+    const codeEditor = document.querySelector(".code-editor");
+  
+    if (codeEditor) {
+        codeEditor.addEventListener("click", function (event) {
+            if (event.target.classList.contains("file-folder-shown")) {
+                const folderContainer = event.target.closest(".file-folder");
+                if (folderContainer) {
+                    const hiddenFolder = folderContainer.querySelector(".file-folder-hidden");
+
+                    
+                    if (hiddenFolder) {
+                        if (hiddenFolder.style.display === 'none' || !hiddenFolder.style.display) {
+                            hiddenFolder.style.display = 'block';
+                          
+                        } else {
+                            hiddenFolder.style.display = 'none';
+             
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+/*------------------------------^-------------------*/
+document.querySelectorAll('.file').forEach(button => {
+    button.addEventListener('click', function() {
+        let currentlyDisplayedCode = `docs_external_${this.id}.txt`;
+        document.querySelector(".code-content iframe").src = currentlyDisplayedCode;
+        document.querySelector(".file-name").innerText = this.innerText; // Update the span text
+    });
 });
