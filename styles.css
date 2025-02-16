@@ -419,6 +419,7 @@ ul.resource-links{
     box-sizing: border-box;
     position: relative;
 }
+
 #dMain .buttonselections{
     display:grid;
 }
@@ -426,6 +427,11 @@ ul.resource-links{
     color:black;
     border:1px solid black;
     margin:-2px 0px
+}
+@media screen and (max-width: 800px){
+    .buttonselections{
+        grid-template-columns: auto auto auto auto !important;
+    }
 }
 #dMain .buttonselections button {
     transform: translateY(0px);
@@ -443,6 +449,8 @@ ul.resource-links{
     border:none;
     opacity:1;
     transition: opacity 0.1s ease-out;
+    overflow:hidden;
+    text-wrap:nowrap;
 }
 #dMain .buttonselections button::before{
     content:" + ";
