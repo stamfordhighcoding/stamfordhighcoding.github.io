@@ -1,6 +1,7 @@
 ## Stamford High Coding Club's official website
 > Not Completed
-> **Last update: slight mobile layout tweaks, project ideas page, and link additions**
+> **Last update: code editor gui and threejs p2 doc**
+> - slight mobile layout tweaks, project ideas page, and link additions
 > - Basic nav with mobile-only layout, also first blog item
 <!--
 **stamfordhighcoding/stamfordhighcoding** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
