@@ -1,6 +1,7 @@
 ## Stamford High Coding Club's official website
 > Not Completed
 > **Last update: code editor gui and threejs p2 doc**
+> - **need to fix: mobile cannot see the black tabs because they are set pixel widths**
 > - slight mobile layout tweaks, project ideas page, and link additions
 > - Basic nav with mobile-only layout, also first blog item
 <!--
