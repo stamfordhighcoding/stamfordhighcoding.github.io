@@ -85,6 +85,16 @@
             "description": "4-digit password cracker",
             "extendedDescription": "A brute-force password cracker that systematically tries all possible 4-digit combinations. Bonus: measure how long it takes to crack specific passwords.",
             "tags": ["beginner", "simple", "python", "java", "C#", "bash"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_stockapi.webp",
+                "alt": "stock api"
+            },
+            "description": "Stock API",
+            "extendedDescription": "Use a provider such as finnhub, polygon.io, Yahoo finance with RapidAPI, IEX cloud, or alpha vantage to get real-time stock quotes, and use javascript to display the prices. For a challenge, find how to graph the prices using a js charting library.",
+            "tags": ["backend", "JS", "WebSockets", "realtime", "API"]
         }
     ],
         "resourceList": {
