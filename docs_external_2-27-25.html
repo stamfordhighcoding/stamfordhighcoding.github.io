@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Flight Game</title>
+    <style>
+        body{
+          margin:0;
+          background-color:black;
+          overflow:hidden;
+          font-family: Arial, sans-serif;
+        }
+        canvas{
+          outline:1px solid rgb(255, 228, 228);
+        }
+        #stats{
+          position:absolute;
+          width:200px;
+          color:white;
+          padding:10px;
+        }
+        #stats span{
+          width:100%;
+          display:block;
+        }
+        #play{
+          background:none;
+          border:none;
+          cursor:pointer;
+          width:100px;
+          height:100px;
+          position:absolute;
+          left:calc(50% - 50px);
+          top:calc(50vh - 50px);
+          border-radius:50%;
+          padding:0px;
+        }
+        #gameSettings {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          width: 250px;
+          background-color: rgba(0, 0, 0, 0.7);
+          border: 1px solid #444;
+          border-radius: 8px;
+          padding: 15px;
+          color: white;
+          z-index: 100;
+        }
+        #gameSettings h3 {
+          margin-top: 0;
+          text-align: center;
+          color: white;
+        }
+        .setting-group {
+          margin-bottom: 15px;
+        }
+        .setting-group label {
+          display: block;
+          margin-bottom: 5px;
+        }
+        .setting-group input {
+          width: calc(100% - 15px);
+          background-color: #222;
+          border: 1px solid #555;
+          color: white;
+          padding: 5px;
+          border-radius: 4px;
+        }
+        .setting-group .value-display {
+          float: right;
+          font-weight: bold;
+          color: white;
+        }
+        button#applySettings {
+          width: 100%;
+          background-color: lightblue;
+          color: black;
+          border: none;
+          padding: 8px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+        button#applySettings:hover {
+          background-color: rgb(47, 118, 199);
+        }
+        #resetDefaults {
+          background: none;
+          border: none;
+          color: #aaa;
+          text-decoration: underline;
+          cursor: pointer;
+          display: block;
+          margin: 10px auto 0;
+          text-align: center;
+        }
+        #resetDefaults:hover {
+          color: white;
+        }
+      </style>
+      <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.173.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.173.0/examples/jsm/"
+          }
+        }
+      </script>
+</head>
+<body>
+    <div id="stats">
+        <span id="cameraPosition">cameraPosition</span>
+        <span id="mousePosition">mousePosition</span>
+        <span id="velocity">velocity</span>
+        <span id="totalCollisions">collisions: 0</span>
+      </div>
+      
+      <div id="gameSettings">
+        <h3>Game Settings</h3>
+        <div class="setting-group">
+          <label for="maxSpeed">Max Speed: <span id="maxSpeedValue" class="value-display">0.29</span></label>
+          <input type="range" id="maxSpeed" min="0.1" max="0.5" step="0.01" value="0.29">
+        </div>
+        
+        <div class="setting-group">
+          <label for="acceleration">Acceleration: <span id="accelerationValue" class="value-display">0.00003</span></label>
+          <input type="range" id="acceleration" min="0.00001" max="0.0001" step="0.00001" value="0.00003">
+        </div>
+        
+        <div class="setting-group">
+          <label for="totalMeteors">Meteors: <span id="totalMeteorsValue" class="value-display">2500</span></label>
+          <input type="range" id="totalMeteors" min="500" max="5000" step="100" value="2500">
+        </div>
+        
+        <button id="applySettings">Apply Settings</button>
+        <button id="resetDefaults">Reset to Defaults</button>
+      </div>
+      
+      <button id="play" onclick="startGame()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path fill="white" d="m10.65 15.75l4.875-3.125q.35-.225.35-.625t-.35-.625L10.65 8.25q-.375-.25-.763-.038t-.387.663v6.25q0 .45.388.663t.762-.038M12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>
+      </button>
+      <canvas class="threejs"></canvas>
+      <script type="module">
+       import * as THREE from 'three';
+       import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// Create scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000); // Set initial background color to black
+
+// Game state variables
+let isGameRunning = false;
+let currentSpeed = 0.025;
+
+// Game settings with default values
+const gameSettings = {
+    maxSpeed: 0.29,
+    acceleration: 0.00003,
+    totalMeteors: 2500
+};
+
+// Camera follow variables
+const cameraFollowLerpFactor = 0.03; // How quickly camera follows jet (lower = smoother)
+const maxCameraOffset = { x: 1.5, y: 1.0 }; // Maximum camera offset from center
+
+// Performance settings
+const baseVisibilityDistance = 300; // Base visibility distance
+let visibilityDistance = baseVisibilityDistance;
+const meteorScale = 0.03;           // Uniform scale for all meteors
+
+// Arrays to store meteor data
+let meteorPositions = [];     // Store all meteor positions
+let meteors = [];             // Store meteor meshes
+let meteorModel = null;       // Store the original meteor model
+
+// Global variable for the jet (spaceship)
+let jet = null;
+
+// Collision settings
+let collisionCount = 0;
+const jetHitRadius = 0.15;      // Adjust as needed for the jet hitbox size
+const meteorHitRadius = 0.1;    // Adjust as needed for the meteor hitbox size
+let flashTimeout = null;        // Timeout for background flash effect
+
+// Mouse and auto-centering variables
+let mouseX = 0;
+let mouseY = 0;
+let lastMouseMoveTime = Date.now();
+const IDLE_TIMEOUT = 3000; // 3 seconds in milliseconds
+let isReturningToCenter = false;
+
+// Generate meteor positions with optimal spacing
+const generateMeteorPositions = () => {
+    meteorPositions = [];
+    let currentZ = -5;
+    const possibleOffsets = [0.5, 0.6, 0.8];
+    
+    for (let i = 0; i < gameSettings.totalMeteors; i++) {
+        meteorPositions.push({
+            x: (Math.random() - 0.5) * 5,  // Range
+            y: (Math.random() - 0.5) * 5,  // Range
+            z: currentZ
+        });
+        
+        // Add random offset for next meteor
+        currentZ -= possibleOffsets[Math.floor(Math.random() * possibleOffsets.length)];
+    }
+};
+
+// Function to flash background on collision
+const flashBackground = () => {
+    // Clear any existing timeout to prevent multiple flashes overlapping
+    if (flashTimeout) {
+        clearTimeout(flashTimeout);
+    }
+    
+    // Set background to dark red
+    scene.background = new THREE.Color("#691402");
+    
+    // Set timeout to return to black after 0.5 seconds
+    flashTimeout = setTimeout(() => {
+        scene.background = new THREE.Color(0x000000);
+        flashTimeout = null;
+    }, 500);
+};
+
+// Initialize scene elements
+const setupLighting = () => {
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    directionalLight.position.set(2, 3, 5);
+    directionalLight.castShadow = true;
+    scene.add(ambientLight, directionalLight);
+};
+
+// Initialize camera
+const camera = new THREE.PerspectiveCamera(
+    65,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    visibilityDistance
+);
+camera.position.set(0, 0, 0);
+camera.lookAt(0, 0, -5);
+scene.add(camera);
+
+// Initialize renderer
+const canvas = document.querySelector('canvas.threejs');
+const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    powerPreference: 'high-performance'
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+
+// Optimize renderer
+renderer.shadowMap.autoUpdate = false;  // Update shadows only once
+renderer.shadowMap.needsUpdate = true;
+
+// Handle window resizing
+const handleResize = () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+};
+window.addEventListener('resize', handleResize, false);
+
+// Mouse movement handler
+window.addEventListener('mousemove', (event) => {
+    // Convert to normalized coordinates (-1 to 1)
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    
+    // Update the HTML element
+    const mousePosition = document.getElementById('mousePosition');
+    if (mousePosition) {
+        mousePosition.textContent = `X: ${mouseX.toFixed(2)}, Y: ${mouseY.toFixed(2)}`;
+    }
+    
+    // Reset the idle timer and centering flag
+    lastMouseMoveTime = Date.now();
+    isReturningToCenter = false;
+});
+
+// Function to clear all meteors
+const clearMeteors = () => {
+    meteors.forEach(meteor => {
+        scene.remove(meteor);
+    });
+    meteors = [];
+};
+
+// Load and initialize meteors
+const initializeMeteors = () => {
+    generateMeteorPositions();
+    
+    const loader = new GLTFLoader();
+    loader.load('meteor.glb', (gltf) => {
+        meteorModel = gltf.scene;
+        meteorModel.scale.set(meteorScale, meteorScale, meteorScale);
+        meteorModel.rotation.x = Math.PI / -2;
+        
+        // Optimize the original model
+        meteorModel.traverse((child) => {
+            if (child.isMesh) {
+                child.castShadow = true;
+                child.receiveShadow = true;
+                child.geometry.setDrawRange(0, Infinity);
+                child.geometry.setAttribute('position', 
+                    new THREE.Float32BufferAttribute(child.geometry.attributes.position.array, 3));
+            }
+        });
+
+        createMeteors();
+    });
+};
+
+// Create meteors from positions
+const createMeteors = () => {
+    // Clear previous meteors if they exist
+    clearMeteors();
+    
+    // Create meteor instances
+    meteorPositions.forEach((position) => {
+        const meteorInstance = meteorModel.clone();
+        meteorInstance.position.set(position.x, position.y, position.z);
+        meteorInstance.visible = false;  // Start hidden
+        meteorInstance.userData.collided = false;
+        meteors.push(meteorInstance);
+        scene.add(meteorInstance);
+    });
+
+    updateMeteorVisibility(camera.position.z, visibilityDistance);
+    renderer.shadowMap.needsUpdate = true;
+};
+
+// Load and initialize the jet (spaceship) model with spotlights
+// Load and initialize the jet (spaceship) model with spotlights
+const initializeJet = () => {
+    const loader = new GLTFLoader();
+    loader.load('jet.glb', (gltf) => {
+        jet = gltf.scene;
+        jet.scale.set(0.5, 0.5, 0.5);
+        jet.position.set(0, 0, -5);
+
+        // Create light cones without actual spotlights
+        const lightColor = 0xff8800;
+        const distance = 3;
+        const angle = Math.PI / 15;
+
+        // Create cone geometry for visual representation
+        const coneGeometry = new THREE.ConeGeometry(
+            Math.tan(angle / 2) * distance / 5, // Radius reduced 5x
+            distance / 5,  // Height reduced 5x
+            32
+        );
+        coneGeometry.translate(0, -distance / 10, 0); // Adjusted for smaller height
+        coneGeometry.rotateX(Math.PI / 2);
+
+        const coneMaterial = new THREE.MeshBasicMaterial({
+            color: lightColor,
+            transparent: true,
+            opacity: 0.15,
+            depthWrite: false
+        });
+
+        // Create left and right cone meshes
+        const leftCone = new THREE.Mesh(coneGeometry, coneMaterial.clone());
+        leftCone.position.set(-0.15, 0.4, 0.7);
+        leftCone.rotation.y = Math.PI;
+        jet.add(leftCone);
+
+        const rightCone = new THREE.Mesh(coneGeometry, coneMaterial.clone());
+        rightCone.position.set(0.15, 0.4, 0.7);
+        rightCone.rotation.y = Math.PI;
+        jet.add(rightCone);
+
+        // Prevent jet illumination
+        jet.traverse((child) => {
+            if (child.isMesh) {
+                child.receiveShadow = false;
+                child.material.shadowSide = THREE.BackSide;
+            }
+        });
+
+        scene.add(jet);
+    });
+};
+
+// Update meteor visibility based on camera position
+const updateMeteorVisibility = (cameraZ, dynamicVisibilityDistance) => {
+    meteors.forEach((meteor) => {
+        const distance = meteor.position.z - cameraZ;
+        meteor.visible = (distance < dynamicVisibilityDistance && distance > -30);
+    });
+};
+
+// Helper function to smoothly move a value towards zero
+const moveTowardsZero = (value, speed) => {
+    if (Math.abs(value) < speed) return 0;
+    return value > 0 ? value - speed : value + speed;
+};
+
+// Helper function to update jet position and rotation
+const updateJet = () => {
+    if (!jet) return;
+
+    const normalLerpFactor = 0.1;
+    const centeringLerpFactor = 0.02;
+    const timeSinceLastMove = Date.now() - lastMouseMoveTime;
+    
+    // Calculate target position
+    let targetX = mouseX * 2;
+    let targetY = (mouseY * 2) - 0.05;
+    let currentLerpFactor = normalLerpFactor;
+
+    if (timeSinceLastMove > IDLE_TIMEOUT) {
+        isReturningToCenter = true;
+        targetX = 0;
+        targetY = 0;
+        currentLerpFactor = centeringLerpFactor;
+    }
+
+    // Update position
+    jet.position.x += (targetX - jet.position.x) * currentLerpFactor;
+    jet.position.y += (targetY - jet.position.y) * currentLerpFactor;
+    jet.position.z = camera.position.z - 2;
+
+    // Update rotation
+    const maxTilt = Math.PI / 6;
+    let desiredTilt;
+    
+    if (isReturningToCenter) {
+        desiredTilt = moveTowardsZero(jet.rotation.z, 0.01);
+    } else {
+        desiredTilt = -maxTilt * Math.pow(-mouseX * 1.5, 3);
+    }
+    
+    jet.rotation.z += (desiredTilt - jet.rotation.z) * currentLerpFactor;
+};
+
+// Check collisions between jet and meteors
+const checkCollisions = () => {
+    if (!jet) return;
+
+    meteors.forEach((meteor) => {
+        if (meteor.visible) {
+            const collisionPoint = new THREE.Vector3(
+                meteor.position.x,
+                meteor.position.y - 0.2,
+                meteor.position.z
+            );
+            
+            const distance = jet.position.distanceTo(collisionPoint);
+            const collisionThreshold = jetHitRadius + meteorHitRadius;
+            
+            if (distance < collisionThreshold) {
+                if (!meteor.userData.collided) {
+                    collisionCount++;
+                    meteor.userData.collided = true;
+                    const totalCollisions = document.getElementById('totalCollisions');
+                    if (totalCollisions) {
+                        totalCollisions.textContent = 'collisions: ' + collisionCount;
+                    }
+                    
+                    // Trigger background flash on new collision
+                    flashBackground();
+                }
+            } else {
+                meteor.userData.collided = false;
+            }
+        }
+    });
+};
+
+// Update game state
+const updateGame = () => {
+    if (isGameRunning) {
+        if (currentSpeed < gameSettings.maxSpeed) {
+            currentSpeed += gameSettings.acceleration;
+        }
+        camera.position.z -= currentSpeed;
+        
+        // Add camera follow logic here
+        if (jet) {
+            // Calculate target camera position that follows jet with limits
+            const targetCameraX = Math.max(-maxCameraOffset.x, 
+                                 Math.min(maxCameraOffset.x, jet.position.x * 0.7));
+            const targetCameraY = Math.max(-maxCameraOffset.y, 
+                                 Math.min(maxCameraOffset.y, jet.position.y * 0.7));
+            
+            // Smoothly move camera towards target position
+            camera.position.x += (targetCameraX - camera.position.x) * cameraFollowLerpFactor;
+            camera.position.y += (targetCameraY - camera.position.y) * cameraFollowLerpFactor;
+        }
+        
+        // Calculate displayed velocity and dynamic parameters
+        let displayedVelocity = (Math.round((currentSpeed * 100) * 1000) / 1000 - 2).toFixed(2);
+        const velocityValue = parseFloat(displayedVelocity) || 1; // Fallback to 1 if invalid
+
+        // Update visibility distance with factor
+        const visibilityFactor = 1;
+        visibilityDistance = baseVisibilityDistance * velocityValue * visibilityFactor;
+        updateMeteorVisibility(camera.position.z, visibilityDistance);
+
+
+        const velocity = document.getElementById('velocity');
+        if (velocity) {
+            velocity.textContent = 'velocity: ' + displayedVelocity;
+        }
+    }
+
+    updateJet();
+    checkCollisions();
+
+    const cameraPosition = document.getElementById('cameraPosition');
+    if (cameraPosition) {
+        cameraPosition.textContent = 
+            `X: ${camera.position.x.toFixed(2)}, Y: ${camera.position.y.toFixed(2)}, Z: ${camera.position.z.toFixed(2)}`;
+    }
+};
+
+// Game start function
+window.startGame = () => {
+    isGameRunning = true;
+    const playButton = document.getElementById('play');
+    if (playButton) {
+        playButton.disabled = true;
+        playButton.style.display = "none";
+    }
+    
+    // Hide settings when game starts
+    document.getElementById('gameSettings').style.display = 'none';
+};
+
+// Render loop
+const renderloop = () => {
+    updateGame();
+    
+    // Make camera look ahead along the path
+    if (jet) {
+        // Look ahead at a point in front of the jet
+        camera.lookAt(jet.position.x * 0.5, jet.position.y * 0.5, camera.position.z - 10);
+    } else {
+        camera.lookAt(0, 0, camera.position.z - 10);
+    }
+    
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(renderloop);
+};
+
+// Apply settings function
+const applySettings = () => {
+    gameSettings.maxSpeed = parseFloat(document.getElementById('maxSpeed').value);
+    gameSettings.acceleration = parseFloat(document.getElementById('acceleration').value);
+    
+    // Get new total meteors value
+    const newTotalMeteors = parseInt(document.getElementById('totalMeteors').value);
+    
+    // Only regenerate meteors if the count changed
+    if (newTotalMeteors !== gameSettings.totalMeteors) {
+        gameSettings.totalMeteors = newTotalMeteors;
+        
+        // Regenerate meteors if the model is loaded
+        if (meteorModel) {
+            generateMeteorPositions();
+            createMeteors();
+        }
+    }
+    
+    // Reset current speed when settings change
+    currentSpeed = 0.025;
+};
+
+// Reset to defaults function
+const resetDefaults = () => {
+    // Reset to default values
+    gameSettings.maxSpeed = 0.29;
+    gameSettings.acceleration = 0.00003;
+    gameSettings.totalMeteors = 2500;
+    
+    // Update the UI
+    document.getElementById('maxSpeed').value = gameSettings.maxSpeed;
+    document.getElementById('acceleration').value = gameSettings.acceleration;
+    document.getElementById('totalMeteors').value = gameSettings.totalMeteors;
+    
+    // Update displayed values
+    document.getElementById('maxSpeedValue').textContent = gameSettings.maxSpeed;
+    document.getElementById('accelerationValue').textContent = gameSettings.acceleration;
+    document.getElementById('totalMeteorsValue').textContent = gameSettings.totalMeteors;
+    
+    // Regenerate meteors if the model is loaded
+    if (meteorModel) {
+        generateMeteorPositions();
+        createMeteors();
+    }
+    
+    // Reset current speed
+    currentSpeed = 0.025;
+};
+
+// Set up form event listeners
+document.getElementById('maxSpeed').addEventListener('input', function() {
+    document.getElementById('maxSpeedValue').textContent = this.value;
+});
+
+document.getElementById('acceleration').addEventListener('input', function() {
+    document.getElementById('accelerationValue').textContent = this.value;
+});
+
+document.getElementById('totalMeteors').addEventListener('input', function() {
+    document.getElementById('totalMeteorsValue').textContent = this.value;
+});
+
+document.getElementById('applySettings').addEventListener('click', applySettings);
+document.getElementById('resetDefaults').addEventListener('click', resetDefaults);
+
+// Initialize everything
+setupLighting();
+initializeMeteors();
+initializeJet();
+renderloop();
+    </script>
+</body>
+</html>

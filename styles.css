@@ -673,3 +673,11 @@ span.url-name{
     }
 }
 /*------------------------------*/
+.fullIframe{
+    width: 100%;
+    height:fit-content;
+}
+.fullIframe iframe{
+    width:100%;
+    height:90vh;
+}

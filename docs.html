@@ -118,7 +118,7 @@ print(chat_completion.choices[0].message.content)</code></pre>
                 <hr class="buttonselectionsafter">
                 <div class="windowcontainer-objects">
                     <div>
-                        <h1>Did you know that krunker.io uses threejs?</h1>
+                        <h1>three.js</h1>
                         <p>three.js is an external library built on top of WebGL for rendering in 3D. WebGL requires some very low-level knowledge, which would take a lot of time to get into. three.js is the most optimized, well-documented library to use for our case. To test if your browser can view WebGL and run three.js, confirm you can move the object below:</p>
                         <div class="threeIframe"><p>Hover over me</p><iframe src="docs_external_2-20-25.html"></iframe></div>
                         <p>To view models, .gltf and .glb formats are the best for importing. Otherwise, OBJ, FBX, STL, Collada, and PLY are also possible to use, though not recommended. The latest version as of writing this is <span>r173</span>, published on December 31.</p>
@@ -402,7 +402,7 @@ scene.add(cubeMesh)
             
 <green>// initialize the camera</green>
 const camera = new THREE.PerspectiveCamera(
-    75, //FOV
+    75, 
     window.innerWidth / window.innerHeight,
     0.1, //dont see anything closer than this distance
     30 //dont see anything farther than this distance
@@ -431,8 +431,11 @@ renderer.render(scene, camera)
     
     
     
-    
-    
+        <button onclick="copyID('d-2-27-25')" class="titlebtn" id="d-2-27-25">2/27/25: Preview of the jet game</button>
+        <br>
+        <br>
+        <div class="fullIframe"><iframe src="docs_external_2-27-25.html"></iframe></div>
+
     </div><!--end of #dMain-->
 
        
