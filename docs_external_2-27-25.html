@@ -270,7 +270,7 @@ const handleResize = () => {
 window.addEventListener('resize', handleResize, false);
 
 // Mouse movement handler
-window.addEventListener('mousemove', (event) => {
+window.addEventListener('pointermove', (event) => {
     // Convert to normalized coordinates (-1 to 1)
     mouseX = (event.clientX / window.innerWidth) * 2 - 1;
     mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
