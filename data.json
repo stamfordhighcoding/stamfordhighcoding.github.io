@@ -20,6 +20,13 @@
                 "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_jetgame.webp",
                 "alt": "jet game"
             }
+        },
+        {
+            "href": "/docs.html#d-3-6-25",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_ecswebsite.webp",
+                "alt": "ecs website"
+            }
         }
     ],
     "projectIdeas": [
