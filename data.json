@@ -139,6 +139,11 @@
                         "extraText": "an IDE (mainly for static sites)"
                     },
                     {
+                        "href": "https://codeanywhere.com/",
+                        "content": "codeanywhere",
+                        "extraText": "another online IDE, marketed especially for python"
+                    },
+                    {
                         "href": "https://stackblitz.com/",
                         "content": "stackblitz",
                         "extraText": "an online IDE, also has Bolt.new for Ai app creation"
