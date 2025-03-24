@@ -106,6 +106,16 @@
             "description": "4-digit password cracker",
             "extendedDescription": "A brute-force password cracker that systematically tries all possible 4-digit combinations. Bonus: measure how long it takes to crack specific passwords.",
             "tags": ["beginner", "simple", "python", "java", "C#", "bash"]
+        },
+        {
+            "href": "",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/pi_findata.webp",
+                "alt": "stock data"
+            },
+            "description": "market data",
+            "extendedDescription": "use providers such as Finnhub, yfinance, yahoo-finance2, Schwab's API, or others to fetch realtime stock quotes.",
+            "tags": ["python", "backend", "fullstack", "JS", "API", "node.js"]
         }
     ],
         "resourceList": {
