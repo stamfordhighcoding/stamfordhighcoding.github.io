@@ -645,6 +645,129 @@ npm test
             <li>Pin critical dependencies by using exact versions.</li>
         </ul>
 
+        <br>
+
+        <button onclick="copyID('d-4-17-25')" class="titlebtn" id="d-4-17-25">4/17/25: Using Git</button>
+        <br>
+        <br>
+        <p>Git is a distributed version control system for tracking changes in source code during software development. It lets you record snapshots of your project, collaborate with others, and safely experiment without losing history. In other words, if you want an advanced CTRL+Z with cross-device features, and enterprise-level version control, git is one of the best solutions.</p>
+        <p>A couple of cases we will be using git is to push code to Github, clone a Github Repository, and keep version control.</p>
+        <p>Gitlab and Bitbucket are a couple of alternatives to Github that enterprises use.</p>
+        <ul>
+            <li>Windows (and others): Download and run the installer from <a href="https://git-scm.com/downloads">git-scm.com/downloads</a>.</li>
+            <li>macOS (terminal): <span>brew install git</span> (if you have Homebrew)</li>
+            <li>Linux (Debian/Ubuntu): <span>sudo apt-get update && sudo apt-get install git</span></li>
+        </ul>
+        <p>After installing, configure your identity:</p>
+
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+</code></pre>
+        </div>
+        <br>
+        <h2>Starting a Repository</h2>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+cd path/to/project
+git init
+</code></pre>
+        </div>
+        <br>
+        <p>Clone an existing repo:</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+git clone https://github.com/username/repo.git
+</code></pre>
+        </div>
+        <br>
+        <h2>Basic Workflow</h2>
+        <p>Check Status</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+git status
+</code></pre>
+        </div>
+        <br>
+        <p>Stage Changes</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+git add file1.txt          <green># single file</green>
+git add .                  <green># all changes</green>
+</code></pre>
+        </div>
+        <br>
+        <p>Commit Staged Changes</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+git commit -m "Brief, descriptive message"
+</code></pre>
+        </div>
+        <br>
+        <p>View history:</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+git log --oneline --graph
+</code></pre>
+        </div>
+        <br>
+        <h2>Remotes & Collaboration</h2>
+        <ul>
+            <li>Add a remote: <span>git remote add origin https://github.com/username/repo.git</span></li>
+            <li>First push for upstream: <span>git push -u origin main</span></li>
+            <li>subsequent pushes <span>git push</span></li>
+            <li>Fetch & integrate changes <span>git pull origin main</span></li>
+        </ul>
+        <br>
+        <h2>Undoing Changes</h2>
+        <ul>
+            <li>Unstage a file: <span>git reset HEAD file.txt</span></li>
+            <li>Discard local changes: <span>git checkout -- file.txt</span></li>
+            <li>Revert a commit <span>git revert &lt;commit-hash&gt;&lt;/commit-hash&gt;</span></li>
+            <li>Reset to a previous commit (destructive): <span>git reset --hard &lt;commit-hash&gt;&lt;/commit-hash&gt;</span></li>
+        </ul>
+        <h2>Best Practices</h2>
+        <ul>
+            <li>Commit often with clear messages.</li>
+            <li>Use branches for features/fixes.</li>
+            <li>Pull before you push to minimize conflicts.</li>
+            <li>Review your work <span>(git diff)</span> before committing.</li>
+        </ul>
+        <br>
+
+        <button onclick="copyID('d-4-24-25')" class="titlebtn" id="d-4-24-25">4/24/25: Writing Markdown files</button>
+        <br>
+        <br>
+        <p>A good README is often the first—and sometimes the only—piece of documentation someone will read when exploring your project. A clear, well-organized README helps users and contributors understand what your project does, how to install and use it, and where to go for more information. </p>
+        <h2>1. Project Title and Short Description</h2>
+        <ul>
+            <li>What it is called</li>
+            <li>A one-sentence summary of what the project does or why it exists.</li>
+        </ul>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </div><!--end of #dMain-->

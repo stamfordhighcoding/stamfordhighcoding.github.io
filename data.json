@@ -55,6 +55,20 @@
                 "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_npm.webp",
                 "alt": "Using npm"
             }
+        },
+        {
+            "href": "/docs.html#d-4-17-25",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_git.webp",
+                "alt": "Using git"
+            }
+        },
+        {
+            "href": "/docs.html#d-4-24-25",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_markdown.webp",
+                "alt": ".md files"
+            }
         }
     ],
     "projectIdeas": [
