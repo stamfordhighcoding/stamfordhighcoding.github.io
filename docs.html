@@ -547,13 +547,103 @@ export default defineConfig({
 
 
 
-
-
-
-
-
-
-
+        <button onclick="copyID('d-4-10-25')" class="titlebtn" id="d-4-10-25">4/10/25: Using NPM</button>
+        <br>
+        <br>
+        <h2>npm (Node Package Manager) Overview</h2>
+        <p>npm is the default package manager for Node.js, used to install, share, and manage dependencies in JavaScript (or TypeScript) projects.</p>
+        <p>npm is bundled with Node.js. Make sure you have the latest LTS version from <a href="https://nodejs.org">nodejs.org</a></p>
+        <p>Verify your installation with <span>node -v</span> and <span>npm -v</span></p>
+        <br>
+        <h2>Initializing a project - use <span>"npm init"</span> or <span>"npm init -y"</span></h2>
+        <p>The generated package.json file should include a structure that may be <u>similar</u> to the following:</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}
+</code></pre>
+        </div>
+        <p>Packages are placed in node_modules/ and their versions recorded in package.json.</p>
+        <br>
+        <h2>Common Comands</h2>
+        <p>Install all dependencies:</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npm install
+</code></pre>
+        </div>
+        <br>
+        <p>Update Packages:</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npm update
+</code></pre>
+        </div>
+        <br>
+        <p>Uninstall a Package:</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npm uninstall [package name]
+</code></pre>
+        </div>
+        <br>
+        <p>List installed packages:</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npm list --depth=0
+</code></pre>
+        </div>
+        <br>
+        <p>Audit for vulnerabilities</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npm audit
+npm audit fix
+</code></pre>
+        </div>
+        <br>
+        <h2>Scripts</h2>
+        <p>In <span>package.json</span> under "scripts"</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+"scripts": {
+  "start": "node server.js",
+  "test": "jest", <green>//example</green>
+  "build": "webpack --config webpack.prod.js" <green>//example</green>
+}
+</code></pre>
+        </div>
+        <p>Note that comments are not permitted in json files.</p>
+        <br>
+        <p>To run, use</p>
+        <div>
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npm run build
+npm test 
+</code></pre>
+        </div>
+        <br>
+        <h2>Tips and Best Practices</h2>
+        <ul>
+            <li>Commit your package.json and package-lock.json; ignore node_modules/.</li>
+            <li>Use npx <cmd> to run binaries without global install.</li>
+            <li>Pin critical dependencies by using exact versions.</li>
+        </ul>
 
 
 

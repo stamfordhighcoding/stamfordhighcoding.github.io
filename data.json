@@ -48,6 +48,13 @@
                 "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_vite.webp",
                 "alt": "Intro to Vite"
             }
+        },
+        {
+            "href": "/docs.html#d-4-10-25",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_npm.webp",
+                "alt": "Using npm"
+            }
         }
     ],
     "projectIdeas": [
