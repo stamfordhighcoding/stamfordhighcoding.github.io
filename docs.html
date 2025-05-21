@@ -500,13 +500,13 @@ renderer.render(scene, camera)
         <p>For chromebooks, get started with a vite project on <u>bolt.new</u></p>
         <p>For desktops using vscode or github codespaces, use the following instructions:</p>
         
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm install -g vite</code></pre>
         </div>
         <br>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm init vite@latest my-app
@@ -518,7 +518,7 @@ npm install
         <p>If prompted for a template, choose vanilla.</p>
         <h2>Configuration</h2>
         <p>In vite.config.js:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 import { defineConfig } from 'vite';
@@ -557,7 +557,7 @@ export default defineConfig({
         <br>
         <h2>Initializing a project - use <span>"npm init"</span> or <span>"npm init -y"</span></h2>
         <p>The generated package.json file should include a structure that may be <u>similar</u> to the following:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 {
@@ -575,7 +575,7 @@ export default defineConfig({
         <br>
         <h2>Common Comands</h2>
         <p>Install all dependencies:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm install
@@ -583,7 +583,7 @@ npm install
         </div>
         <br>
         <p>Update Packages:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm update
@@ -591,7 +591,7 @@ npm update
         </div>
         <br>
         <p>Uninstall a Package:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm uninstall [package name]
@@ -599,7 +599,7 @@ npm uninstall [package name]
         </div>
         <br>
         <p>List installed packages:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm list --depth=0
@@ -607,7 +607,7 @@ npm list --depth=0
         </div>
         <br>
         <p>Audit for vulnerabilities</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm audit
@@ -617,7 +617,7 @@ npm audit fix
         <br>
         <h2>Scripts</h2>
         <p>In <span>package.json</span> under "scripts"</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 "scripts": {
@@ -630,7 +630,7 @@ npm audit fix
         <p>Note that comments are not permitted in json files.</p>
         <br>
         <p>To run, use</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 npm run build
@@ -660,7 +660,7 @@ npm test
         </ul>
         <p>After installing, configure your identity:</p>
 
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 git config --global user.name "Your Name"
@@ -669,7 +669,7 @@ git config --global user.email "you@example.com"
         </div>
         <br>
         <h2>Starting a Repository</h2>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 cd path/to/project
@@ -678,7 +678,7 @@ git init
         </div>
         <br>
         <p>Clone an existing repo:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 git clone https://github.com/username/repo.git
@@ -687,7 +687,7 @@ git clone https://github.com/username/repo.git
         <br>
         <h2>Basic Workflow</h2>
         <p>Check Status</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 git status
@@ -695,7 +695,7 @@ git status
         </div>
         <br>
         <p>Stage Changes</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 git add file1.txt          <green># single file</green>
@@ -704,7 +704,7 @@ git add .                  <green># all changes</green>
         </div>
         <br>
         <p>Commit Staged Changes</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 git commit -m "Brief, descriptive message"
@@ -712,7 +712,7 @@ git commit -m "Brief, descriptive message"
         </div>
         <br>
         <p>View history:</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 git log --oneline --graph
@@ -752,7 +752,7 @@ git log --oneline --graph
             <li>What it is called</li>
             <li>A one-sentence summary of what the project does or why it exists.</li>
         </ul>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 # AwesomeWidget  
@@ -763,7 +763,7 @@ A lightweight JavaScript widget that renders real-time stock tickers on any webs
         <h2>2. Table of Contents</h2>
         <p>(Optional for very short READMEs; recommended once you go past ~10–15 lines.)<br>
             Helps readers jump to the section they need.</p>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 ## Table of Contents
@@ -782,7 +782,7 @@ A lightweight JavaScript widget that renders real-time stock tickers on any webs
             <li>Prerequisites (e.g., Node.js, Python)</li>
             <li>Step-by-step commands or links to package repositories</li>
         </ul>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 ## Installation
@@ -798,8 +798,9 @@ A lightweight JavaScript widget that renders real-time stock tickers on any webs
             <li>Install dependencies. Ex: <span>npm install</span></li>
             <li>Build the widget - if needed. Ex: <span>npm run build</span></li>
         </ul>
-        <div>
-            <h2>Here's an example:</h2>
+        <h2>Here's an example:</h2>
+        <div class="code-holder-fix">
+            
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 ---
@@ -855,7 +856,7 @@ Show one or two common use-cases. Link to live demos or screenshots if available
             <li>Branching or versioning model
 </li>
         </ul>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 ## Development
@@ -880,7 +881,7 @@ npm run lint
             <li>coding standards</li>
             <li>code of conduct</li>
         </ul>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 ## Contributing
@@ -894,7 +895,7 @@ npm run lint
         </div>
         <br>
         <h2>License</h2>
-        <div>
+        <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 ## License
@@ -913,7 +914,7 @@ This project is licensed under the MIT License. See [LICENSE](./LICENSE) for det
         </ul>
         <p>Go to makeareadme.com <a href="https://www.makeareadme.com/">for additional info</a></p>
         <h2>Sample:</h2>
-                <div>
+                <div class="code-holder-fix">
             <button onclick="copyCode(this)">Copy Code</button>
 <pre><code id="code-block">
 # Foobar
@@ -958,9 +959,87 @@ Please make sure to update tests as appropriate.
         <br>
         <p>A more in-depth example can be shown on <a href="https://github.com/othneildrew/Best-README-Template?tab=readme-ov-file#readme-top">github.com/othneildrew/Best-README-Template</a></p>
         <br>
+        <button onclick="copyID('d-5-1-25')" class="titlebtn" id="d-5-1-25">5/1/25: Intro to React</button>
+        <br>
+        <br>
+        <p>React is an open-source JavaScript library for building user interfaces, maintained by Facebook and a community of developers. It allows you to create reusable UI components and efficiently update and render the right components when your data changes.</p>
+        <h2>Installation</h2>
+        <p>You can set up a new React project using the official Create React App tool:</p>
 
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npx create-react-app my-app
+cd my-app
+npm start
+</code></pre>
+        <p>This will start a development server at http://localhost:3000.</p>
+        </div>
+        <h2>JSX</h2>
+        <p>JSX is a syntax extension that looks similar to HTML. It lets you write markup in your JavaScript code.</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+function Hello() {
+  return &gt;h1&lt;Hello, world!&gt;/h1&lt;;
+}
+</code></pre>
+        <p>JSX gets compiled to <span>React.createElement</span> calls under the hood.</p>
+        </div>
+        <h2>Components</h2>
+        <p>Components are the building blocks of a React application. There are two types:</p>
+        <p>Functional Components (more popular)</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+function Welcome(props) {
+  return &gt;h2&lt;Welcome, {props.name}!&gt;/h2&lt;;
+}
+</code></pre>
+        </div>
+        <p>and Class Components (older style)</p>
+                <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+class Welcome extends React.Component {
+  render() {
+    return &lt;h2&gt;Welcome, {this.props.name}!&lt;/h2&gt;;
+  }
+}
+</code></pre>
+        <p>Use components to split the UI into independent, reusable parts.</p>
+        </div>
+        <h2>Props</h2>
+        <p>Props (properties) are inputs to components. They are passed down from parent to child and are read-only.</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+&lt;Welcome name="Alice" /&gt;
+</code></pre>
+        <p>Inside <span>Welcome</span>, <span>props.name</span> will be "Alice".</p>
+        </div>
+        <h2>State & Lifecycle</h2>
+        <p>State is managed within a component and can change over time, usually in response to user actions or network responses.</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+import React, { useState } from 'react';
 
+function Counter() {
+  const [count, setCount] = useState(0);
 
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+</code></pre>
+        <p>Inside <span>Welcome</span>, <span>props.name</span> will be "Alice".</p>
+        </div>
 
 
 

@@ -203,6 +203,9 @@ nav a span:hover {
     border-radius:5px;
     margin:0;
 }
+#dMain div.code-holder-fix{
+    transform:translateY(-30px);
+}
 #dMain video{
     margin:20px 0px;
 }

@@ -69,6 +69,13 @@
                 "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_markdown.webp",
                 "alt": ".md files"
             }
+        },
+        {
+            "href": "/docs.html#d-5-1-25",
+            "img": {
+                "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_react.jpg",
+                "alt": "React Intro"
+            }
         }
     ],
     "projectIdeas": [
