@@ -1244,12 +1244,12 @@ import Image from 'next/image'
 
 export default function Avatar() {
   return (
-    <Image
+    &lt;Image
       src="/me.png"
       alt="My avatar"
       width={200}
       height={200}
-    />
+    /&gt;
   )
 }
 </code></pre>
@@ -1265,16 +1265,174 @@ export default function Avatar() {
             <li><a href="https://nextjs.org/learn">Learn Next.js</a></li>
             <li><a href="https://github.com/vercel/next.js/tree/canary/examples">Examples</a></li>
         </ul>
+        <br>
+        <button onclick="copyID('d-5-15-25')" class="titlebtn" id="d-5-15-25">5/15/25: Tailwindcss</button>
+        <br>
+        <br>
+        <p>TailwindCSS's slogan is "Rapidly build modern websites without ever leaving your HTML," which means you would never need to create a styles.css page for your index.html projects. Code might look something like this:</p>
+        <img src="https://github.com/stamfordhighcoding/assets/blob/main/blog_5_18_25_tailwindcode.png?raw=true">
+        <p>It uses responsive design size class names like "Mobile", "sm", "md", "1g", and "x1"</p>
+        <p>tailwindcss automatically includes dark mode styling, where you can put <span>dark:</span> in front of any color to apply it in dark mode.</p>
+        <br>
+        <p>Instead of using hex colors, use variable names for fitting themes.</p>
+        <img src="https://github.com/stamfordhighcoding/assets/blob/main/blog_5_17_25_tailwindcolors.png?raw=true">
+        <br>
+        <p>When publishing for production,Tailwind automatically removes all unused CSS, which means your final CSS bundle is the smallest it could possibly be. In fact, most Tailwind projects ship less than 10kB of CSS to the client.</p>
+        <hr>
+        <!--tag:tailwind-->
+        <!-- Tailwind CSS Guide -->
 
+<h2>Introduction to Tailwind CSS</h2>
+<p>Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs directly in your markup without writing custom CSS.</p>
 
+<h2>Installation</h2>
+<p>Install Tailwind CSS via npm:</p>
+<p><span>"npm install tailwindcss"</span></p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+npm install tailwindcss
+    </code></pre>
+</div>
 
+<p>Generate the default configuration file:</p>
+<p><span>"npx tailwindcss init"</span></p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+module.exports = {
+  content: [
+    "./src/**/*.{html,js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+    </code></pre>
+</div>
 
+<h2>Adding Tailwind Directives to Your CSS</h2>
+<p>Create a CSS file (e.g., <span>"styles.css"</span>) and add the Tailwind directives:</p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+    </code></pre>
+</div>
 
+<h2>Building Your CSS</h2>
+<p>Use the Tailwind CLI to compile your CSS:</p>
+<p><span>"npx tailwindcss -i ./styles.css -o ./output.css --watch"</span></p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+npx tailwindcss -i ./styles.css -o ./output.css --watch
+    </code></pre>
+</div>
 
+<h2>Using Utility Classes</h2>
+<p>Apply utility classes directly in your HTML:</p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+&lt;button class=&quot;bg-blue-500 text-white font-bold py-2 px-4 rounded&quot;&gt;
+  Click Me
+&lt;/button&gt;
+    </code></pre>
+</div>
 
+<h2>Responsive Design</h2>
+<p>Use responsive prefixes to apply styles at different breakpoints:</p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+&lt;div class=&quot;p-4 sm:p-6 md:p-8 lg:p-10&quot;&gt;
+  Responsive padding
+&lt;/div&gt;
+    </code></pre>
+</div>
 
+<h2>Customizing the Theme</h2>
+<p>Extend the default theme in <span>"tailwind.config.js"</span> to add custom colors, spacing, or fonts:</p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1D4ED8',
+        secondary: '#9333EA',
+      },
+      spacing: {
+        '72': '18rem',
+        '84': '21rem',
+      },
+    },
+  },
+  plugins: [],
+}
+    </code></pre>
+</div>
 
+<h2>Dark Mode</h2>
+<p>Enable dark mode in <span>"tailwind.config.js"</span> and use the <span>"dark:"</span> prefix:</p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+module.exports = {
+  darkMode: 'class', // or 'media'
+  theme: {
+    extend: {},
+  },
+}
 
+&lt;div class=&quot;bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-6&quot;&gt;
+  Dark mode example
+&lt;/div&gt;
+    </code></pre>
+</div>
+
+<h2>Plugins</h2>
+<p>Install and configure Tailwind plugins to add additional utilities:</p>
+<p><span>"npm install @tailwindcss/forms"</span></p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+// In tailwind.config.js
+module.exports = {
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
+}
+    </code></pre>
+</div>
+
+<h2>Production Builds</h2>
+<p>Minify and purge unused styles for production:</p>
+<p><span>"npx tailwindcss -i ./styles.css -o ./output.css --minify"</span></p>
+<div class="code-holder-fix">
+    <button onclick="copyCode(this)">Copy Code</button>
+    <pre><code id="code-block">
+npx tailwindcss -i ./styles.css -o ./output.css --minify
+    </code></pre>
+</div>
+        <h2>For a ready-to-go sandbox for tailwind (with just HTML):</h2>
+        <p><a href="https://play.tailwindcss.com/">play.tailwindcss.com</a></p>
+        <br>
+        <br>
+        <h2>Over the weekend, there will be a seminar for those interested on how to use Tailwindcss with nextjs.</h2>
+
+        <!--endtag:tailwind-->
+        <br>
+        <button onclick="copyID('d-5-22-25')" class="titlebtn" id="d-5-22-25">5/22/25: Shadcn/ui</button>
+        <br>
+        <br>
+        <p>The docs for nextjs installation can be found <a href="https://ui.shadcn.com/docs/installation/next">here</a></p>
+        <br>
 
 
 

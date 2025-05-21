@@ -83,6 +83,20 @@
                 "src": "https://github.com/stamfordhighcoding/assets/blob/main/g_nextjs.jpg?raw=true",
                 "alt": "Nextjs"
             }
+        },
+        {
+            "href": "/docs.html#d-5-15-25",
+            "img": {
+                "src": "https://github.com/stamfordhighcoding/assets/blob/main/g_tailwind.jpg?raw=true",
+                "alt": "Tailwind CSS"
+            }
+        },
+        {
+            "href": "/docs.html#d-5-22-25",
+            "img": {
+                "src": "https://github.com/stamfordhighcoding/assets/blob/main/g_shadcn.jpg?raw=true",
+                "alt": "ShadCN UI"
+            }
         }
     ],
     "projectIdeas": [
