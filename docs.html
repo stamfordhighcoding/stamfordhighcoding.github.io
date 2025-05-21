@@ -1030,16 +1030,246 @@ function Counter() {
 
   return (
     &lt;div&gt;
-      &lt;p&gt;You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
+      &lt;p&gt;You clicked {count} times&lt;p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
         Click me
-      </button>
-    </div>
+      &lt;/button&gt;
+    &lt;/div&gt;
   );
 }
 </code></pre>
-        <p>Inside <span>Welcome</span>, <span>props.name</span> will be "Alice".</p>
+        <p>Lifecycle methods (in class components) and effects (in functional components) let you run code at specific points in a component’s life.</p>
         </div>
+        <h2>Hooks</h2>
+        <p>Hooks (available in functional components) let you use state and other React features without writing a class.</p>
+        <ul>
+            <li><span>useState</span> — add state to a component</li>
+            <li><span>useEffect</span> — perform side effects (data fetching, subscriptions)</li>
+            <li><span>useContext</span> — access context data</li>
+        </ul>
+        <p>Example with useEffect:</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+import React, { useState, useEffect } from 'react';
+
+function DataFetcher({ url }) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((resp) => resp.json())
+      .then((json) => setData(json));
+  }, [url]);
+
+  return data ? &lt;pre&gt;{JSON.stringify(data, null, 2)}&lt;/pre&gt; : &lt;p&gt;Loading...&lt;/p&gt;;
+}
+</code></pre>
+        </div>
+        <h2>Project Structure</h2>
+        <p>A typical Create React App project looks like:</p>
+                <div>
+<pre><code id="code-block">
+my-app/
+├── public/
+│   └── index.html
+├── src/
+│   ├── App.js
+│   ├── index.js
+│   └── components/
+└── package.json
+</code></pre>
+        <ul>
+            <li><span>public/index.html</span> — the HTML template</li>
+            <li><span>src/index.js</span> — entry point, renders your root component</li>
+            <li><span>src/App.js</span> — main App component</li>
+            <li><span>src/components/</span> — place for custom components</li>
+        </ul>
+        </div>
+        <h2>Resourcces</h2>
+        <p>Vercel has some very simple and great <a href="https://nextjs.org/learn/react-foundations">tutorials</a> for an introduction into react. They emphasize use with nextjs, which we will be reviewing next session.</p>
+        <ul>
+            <li><a href="https://react.dev/learn">Official React Learn</a></li>
+            <li><a href="https://scrimba.com/learn-react-c0e">Scrimba’s Learn React for Free</a></li>
+            <li><a href="https://www.freecodecamp.org/news/react-for-beginners-handbook/">Nathan Sebhastian's Handbook</a></li>
+        </ul>
+        <br>
+        <h2>You can set up templates from scratch, or use templates on replit, bolt.new, or firebase.studio.</h2>
+        <br>
+        <button onclick="copyID('d-5-8-25')" class="titlebtn" id="d-5-8-25">5/8/25: React Framework: Nextjs</button>
+        <br>
+        <br>
+        <p>Nextjs is one of the best react frameworks for building SEO-optimized sites. Uses include ecommerce stores, web apps, documentations, and just about anything you can publish on the web.</p>
+        <p>Some of the bonuses of nextjs include:</p>
+        <ul>
+            <li>server-side rendering</li>
+            <li>static site generation</li>
+            <li>API routes</li>
+        </ul>
+        <p>Because of nextjs's nature, it can be used on serverless publishers if your web app doesn't use much backend. Serverless functions are becoming increasingly popular, and are the perfect solution for low-cost publishing.</p>
+        <h2>Installation</h2>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+npx create-next-app@latest my-nextjs-app</code></pre>
+        </div>
+        <p>Your project structure should Look something like this:</p>
+        <div>
+<pre><code id="code-block">
+my-nextjs-app/
+├── pages/
+│   ├── api/
+│   │   └── hello.js    <green># API endpoint: /api/hello</green>
+│   ├── _app.js         <green># Custom App component</green>
+│   ├── index.js        <green># Homepage: /</green>
+│   └── about.js        <green># About page: /about</green>
+├── public/             <green># Static assets (images, fonts, etc.)</green>
+├── styles/
+│   ├── globals.css     <green># Global styles</green>
+│   └── Home.module.css <green># CSS Module for Home page</green>
+├── next.config.js      <green># Optional configuration</green>
+└── package.json
+</code></pre>
+        </div>
+        <br>
+        <h2>Pages & Routing</h2>
+        <p>Any React component exported from <span>pages/&lt;name&gt;.js</span> becomes a route:</p>
+        <ul>
+            <li>pages/index.js → /</li>
+            <li>pages/about.js → /about</li>
+            <li>pages/blog/post.js → /blog/post</li>
+        </ul>
+        <p>Dynamic routes use bracket notation:</p>
+                <div>
+<pre><code id="code-block">
+pages/
+└── blog/
+    └── [slug].js      <green># Matches /blog/hello-world, /blog/another-post, etc.</green>
+</code></pre>
+        <p>In <span>[slug].js:</span></p>
+        </div>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+import { useRouter } from 'next/router'
+
+export default function Post() {
+  const { query } = useRouter()
+  return <p>Post: {query.slug}</p>
+}
+</code></pre>
+        </div>
+        <br>
+        <h2>Data Fetching - Static Generation (getStaticProps)</h2>
+        <p>Fetch data at build time:</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+export async function getStaticProps() {
+  const res = await fetch('https://api.example.com/posts')
+  const posts = await res.json()
+  return { props: { posts } }
+}
+
+export default function Home({ posts }) {
+  return (
+    &lt;ul&gt;
+      {posts.map(p => (
+        &lt;li key={p.id}&gt;{p.title}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  )
+}
+</code></pre>
+        </div>
+        <br>
+        <h2>Server-side Rendering (getServerSideProps)</h2>
+        <p>Fetch data on every request:</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+export async function getServerSideProps(context) {
+  const res = await fetch(`https://api.example.com/posts/${context.params.id}`)
+  const post = await res.json()
+  return { props: { post } }
+}
+</code></pre>
+        </div>
+        <br>
+        <h2>Client-side Fetching</h2>
+        <p>Use React hooks (e.g. <span>useEffect</span>) if you need dynamic client-only data.</p>
+        <h2>API Routes</h2>
+        <p>Add backend endpoints in <span>pages/api/</span>:</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+// pages/api/hello.js
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello from Next.js API!' })
+}
+</code></pre>
+        <p>Fetch it at <span>/api/hello</span>.</p>
+        </div>
+        <br>
+        <h2>Styling</h2>
+        <p>Import in <span>pages/_app.js</span>:</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+import '../styles/globals.css'
+
+export default function App({ Component, pageProps }) {
+  return &lt;Component {...pageProps} /&gt;
+}
+</code></pre>
+        <p>Create a module file (<span>Home.module.css</span>) and import:</p>
+        </div>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+import styles from '../styles/Home.module.css'
+
+export default function Home() {
+  return &lt;h1 className={styles.title}&gt;Welcome to Next.js!&lt;/h1&gt;
+}
+</code></pre>
+        </div>
+        <br>
+        <h2>Image Optimization</h2>
+        <p>Use the built-in <span>&lt;Image&gt;</span> component:</p>
+        <div class="code-holder-fix">
+            <button onclick="copyCode(this)">Copy Code</button>
+<pre><code id="code-block">
+import Image from 'next/image'
+
+export default function Avatar() {
+  return (
+    <Image
+      src="/me.png"
+      alt="My avatar"
+      width={200}
+      height={200}
+    />
+  )
+}
+</code></pre>
+        <p>Next.js optimizes and serves the best format/size.</p>
+        </div>
+        <br>
+        <h2>Deployment</h2> 
+        <p>The easiest way is via Vercel (the creators of Next.js). Type <span>Vercel</span> from your product directory's terminal.</p>
+        <p>Follow prompts to deploy. You can also deploy to Netlify, AWS, or any platform that supports Node.js.</p>
+        <h2>Further Resources:</h2>
+        <ul>
+            <li><a href="https://nextjs.org/docs">Official Docs</a></li>
+            <li><a href="https://nextjs.org/learn">Learn Next.js</a></li>
+            <li><a href="https://github.com/vercel/next.js/tree/canary/examples">Examples</a></li>
+        </ul>
+
+
+
+
+
 
 
 

@@ -76,6 +76,13 @@
                 "src": "https://raw.githubusercontent.com/stamfordhighcoding/assets/refs/heads/main/g_react.jpg",
                 "alt": "React Intro"
             }
+        },
+        {
+            "href": "/docs.html#d-5-8-25",
+            "img": {
+                "src": "https://github.com/stamfordhighcoding/assets/blob/main/g_nextjs.jpg?raw=true",
+                "alt": "Nextjs"
+            }
         }
     ],
     "projectIdeas": [
